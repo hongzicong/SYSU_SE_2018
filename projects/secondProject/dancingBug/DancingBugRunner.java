@@ -29,12 +29,12 @@ public final class DancingBugRunner
 {
     static final int LOCATION_ROW = 5;
     static final int LOCATION_COL = 5;
+    static final int[] turnArr = {2,5,3,7};
     
     private DancingBugRunner(){}
     public static void main(String[] args)
     {
         ActorWorld world = new ActorWorld();
-        int[] turnArr = {2,5,3,7};
         DancingBug alice = new DancingBug(turnArr);
         alice.setColor(Color.ORANGE);
         world.add(new Location(LOCATION_ROW, LOCATION_COL), alice);

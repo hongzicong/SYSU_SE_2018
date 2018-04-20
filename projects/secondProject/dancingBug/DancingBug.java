@@ -24,7 +24,6 @@ import info.gridworld.actor.Bug;
  */
 public class DancingBug extends Bug
 {
-    private int sideLength;
     private int[] mTurnArr;
     private int count;
 
@@ -37,9 +36,7 @@ public class DancingBug extends Bug
         count = 0;
         if(turnArr!=null){
             mTurnArr = new int[turnArr.length];
-            for(int i = 0; i < turnArr.length;++i){
-                mTurnArr[i] = turnArr[i];
-            }
+            System.arraycopy(turnArr, 0, mTurnArr, 0, turnArr.length);
         } else{
             mTurnArr = new int[1];
         }

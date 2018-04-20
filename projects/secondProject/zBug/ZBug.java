@@ -26,7 +26,7 @@ import info.gridworld.grid.Location;
 public class ZBug extends Bug
 {
 
-    final static int COUNT_MAX = 3;
+    static final int COUNT_MAX = 3;
 
     private int steps;
     private int sideLength;
