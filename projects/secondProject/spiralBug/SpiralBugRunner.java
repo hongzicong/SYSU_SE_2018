@@ -27,9 +27,13 @@ import java.awt.Color;
  */
 public final class SpiralBugRunner 
 {
+    // Used to give row location of dancingBug
     static final int LOCATION_ROW = 5;
+    
+    // Used to give column location of dancingBug
     static final int LOCATION_COL = 5;
 
+    // Used to give spiral length of spiralBug
     static final int LENGTH = 3;
 
     private SpiralBugRunner(){}

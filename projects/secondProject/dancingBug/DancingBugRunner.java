@@ -27,9 +27,14 @@ import java.awt.Color;
  */
 public final class DancingBugRunner 
 {
+    // Used to give row location of dancingBug
     static final int LOCATION_ROW = 5;
+    
+    // Used to give column location of dancingBug
     static final int LOCATION_COL = 5;
-    static final int[] turnArr = {2,5,3,7};
+
+    // Used to give parameter of DancingBug
+    static final int[] TURNARR = {2,5,3,7};
     
     private DancingBugRunner(){}
     public static void main(String[] args)
