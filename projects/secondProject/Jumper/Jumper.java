@@ -55,11 +55,11 @@ public class Jumper extends Actor
     public void act()
     {
         if (canJump()){
-	    jump();	
-	}
+	        jump();	
+	    }
         else{
-	    turn();
-	}
+            turn();
+        }
     }
 
     /**
@@ -76,14 +76,17 @@ public class Jumper extends Actor
     public void jump()
     {
         Grid<Actor> gr = getGrid();
-        if (gr == null)
+        if (gr == null){
             return;
+        }
         Location loc = getLocation();
         Location next = loc.getAdjacentLocation(getDirection()).getAdjacentLocation(getDirection());
-        if (gr.isValid(next))
+        if (gr.isValid(next)){
             moveTo(next);
-        else
+        }
+        else{
             removeSelfFromGrid();
+        }
     }
 
     /**
@@ -93,13 +96,15 @@ public class Jumper extends Actor
     public boolean canJump()
     {
         Grid<Actor> gr = getGrid();
-        if (gr == null)
+        if (gr == null){
             return false;
+        }
         Location loc = getLocation();
         Location nextOne = loc.getAdjacentLocation(getDirection());
-        if (!gr.isValid(nextOne))
+        if (!gr.isValid(nextOne)){
             return false;
-            
+        }
+
         Actor neighborOne = gr.get(nextOne);
         if(!((neighborOne == null)||(neighborOne instanceof Flower)||(neighborOne instanceof Rock))){
             return false;
