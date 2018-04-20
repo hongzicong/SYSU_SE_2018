@@ -1,3 +1,4 @@
+
 /* 
  * AP(r) Computer Science GridWorld Case Study:
  * Copyright(c) 2005-2006 Cay S. Horstmann (http://horstmann.com)
@@ -29,14 +30,12 @@ import info.gridworld.grid.Grid;
  * A <code>BoxBug</code> traces out a square "box" of a given size. <br />
  * The implementation of this class is testable on the AP CS A and AB exams.
  */
-public class Jumper extends Actor
-{
+public class Jumper extends Actor {
 
     /**
      * Constructs a red Jumper.
      */
-    public Jumper()
-    {
+    public Jumper() {
         setColor(Color.RED);
     }
 
@@ -44,20 +43,17 @@ public class Jumper extends Actor
      * Constructs a bug of a given color.
      * @param bugColor the color for this jumper
      */
-    public Jumper(Color bugColor)
-    {
+    public Jumper(Color bugColor) {
         setColor(bugColor);
     }
 
     /**
      * Jumps if it can jump, turns otherwise.
      */
-    public void act()
-    {
-        if (canJump()){
-	        jump();	
-	    }
-        else{
+    public void act() {
+        if (canJump()) {
+            jump();
+        } else {
             turn();
         }
     }
@@ -65,26 +61,23 @@ public class Jumper extends Actor
     /**
      * Turns the bug 45 degrees to the right without changing its location.
      */
-    public void turn()
-    {
+    public void turn() {
         setDirection(getDirection() + Location.HALF_RIGHT);
     }
 
     /**
      * Jumps the bug forward
      */
-    public void jump()
-    {
+    public void jump() {
         Grid<Actor> gr = getGrid();
-        if (gr == null){
+        if (gr == null) {
             return;
         }
         Location loc = getLocation();
         Location next = loc.getAdjacentLocation(getDirection()).getAdjacentLocation(getDirection());
-        if (gr.isValid(next)){
+        if (gr.isValid(next)) {
             moveTo(next);
-        }
-        else{
+        } else {
             removeSelfFromGrid();
         }
     }
@@ -93,32 +86,30 @@ public class Jumper extends Actor
      * Tests whether this jumper can move forward into a location that is empty
      * @return true if this jumper can jump.
      */
-    public boolean canJump()
-    {
+    public boolean canJump() {
         Grid<Actor> gr = getGrid();
-        if (gr == null){
+        if (gr == null) {
             return false;
         }
         Location loc = getLocation();
-        Location nextOne = loc.getAdjacentLocation(getDirection());
-        if (!gr.isValid(nextOne)){
+        Location next = loc.getAdjacentLocation(getDirection());
+        if (!gr.isValid(next)) {
             return false;
         }
 
-        Actor neighborOne = gr.get(nextOne);
-        if(!((neighborOne == null)||(neighborOne instanceof Flower)||(neighborOne instanceof Rock))){
+        Actor neighbor = gr.get(next);
+        if (!((neighbor == null) || (neighbor instanceof Flower) || (neighbor instanceof Rock))) {
             return false;
         }
 
-        Location nextTwo = nextOne.getAdjacentLocation(getDirection());
-        if (!gr.isValid(nextTwo)){
+        next = next.getAdjacentLocation(getDirection());
+        if (!gr.isValid(next)) {
             return false;
         }
-        Actor neighborTwo = gr.get(nextTwo);
-        return (neighborTwo == null) || (neighborTwo instanceof Flower);
+        neighbor = gr.get(next);
+        return (neighbor == null) || (neighbor instanceof Flower) ;
         // ok to move into empty location or onto flower
         // not ok to move onto any other actor
     }
-
 
 }

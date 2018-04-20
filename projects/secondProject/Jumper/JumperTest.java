@@ -9,11 +9,11 @@ import info.gridworld.actor.Bug;
 
 import info.gridworld.grid.Location;
 
-public class JumperTest{
+public class JumperTest {
 
     // Used to give row location of jumper
     static final int LOCATION_ROW = 4;
-        
+
     // Used to give column location of jumper
     static final int LOCATION_COL = 4;
 
@@ -24,29 +24,29 @@ public class JumperTest{
     static final int HALF_DELTA = 1;
 
     @Test
-	public void testDefaultColor(){
+    public void testDefaultColor() {
         Jumper jumper = new Jumper();
-		assertTrue(jumper.getColor() == Color.RED);
+        assertTrue(jumper.getColor() == Color.RED);
     }
 
     @Test
-	public void testColor(){
+    public void testColor() {
         Jumper jumper = new Jumper(Color.PINK);
-		assertTrue(jumper.getColor() == Color.PINK);
+        assertTrue(jumper.getColor() == Color.PINK);
     }
 
-	@Test
-	public void testJump(){
+    @Test
+    public void testJump() {
         ActorWorld world = new ActorWorld();
         Jumper jumper = new Jumper();
         jumper.setDirection(Location.RIGHT);
         world.add(new Location(LOCATION_ROW, LOCATION_COL), jumper);
         world.step();
-		assertTrue(jumper.getLocation().equals(new Location(LOCATION_ROW,LOCATION_ROW + DELTA)));
+        assertTrue(jumper.getLocation().equals(new Location(LOCATION_ROW, LOCATION_ROW + DELTA)));
     }
-    
+
     @Test
-	public void testCanJumpAmongRock(){
+    public void testCanJumpAmongRock() {
         ActorWorld world = new ActorWorld();
         Jumper jumper = new Jumper();
         jumper.setDirection(Location.RIGHT);
@@ -54,11 +54,11 @@ public class JumperTest{
         Rock rock = new Rock();
         world.add(new Location(LOCATION_ROW, LOCATION_COL + HALF_DELTA), rock);
         world.step();
-		assertTrue(jumper.getLocation().equals(new Location(LOCATION_ROW,LOCATION_ROW + DELTA)));
+        assertTrue(jumper.getLocation().equals(new Location(LOCATION_ROW, LOCATION_ROW + DELTA)));
     }
 
     @Test
-    public void testCanJumpAmongFlower(){
+    public void testCanJumpAmongFlower() {
         ActorWorld world = new ActorWorld();
         Jumper jumper = new Jumper();
         jumper.setDirection(Location.RIGHT);
@@ -66,11 +66,11 @@ public class JumperTest{
         Flower flower = new Flower();
         world.add(new Location(LOCATION_ROW, LOCATION_COL + HALF_DELTA), flower);
         world.step();
-		assertTrue(jumper.getLocation().equals(new Location(LOCATION_ROW,LOCATION_ROW + DELTA)));
+        assertTrue(jumper.getLocation().equals(new Location(LOCATION_ROW, LOCATION_ROW + DELTA)));
     }
 
     @Test
-    public void testCanJumpAmongBug(){
+    public void testCanJumpAmongBug() {
         ActorWorld world = new ActorWorld();
         Jumper jumper = new Jumper();
         jumper.setDirection(Location.RIGHT);
@@ -78,7 +78,7 @@ public class JumperTest{
         Bug bug = new Bug();
         world.add(new Location(LOCATION_ROW, LOCATION_COL + HALF_DELTA), bug);
         world.step();
-		assertTrue(jumper.getLocation().equals(new Location(LOCATION_ROW,LOCATION_ROW)));
+        assertTrue(jumper.getLocation().equals(new Location(LOCATION_ROW, LOCATION_ROW)));
     }
 
 }
