@@ -95,6 +95,9 @@ public class Jumper extends Actor
             return false;
         Location loc = getLocation();
         Location nextOne = loc.getAdjacentLocation(getDirection());
+        if (!gr.isValid(nextOne))
+            return false;
+            
         Actor neighborOne = gr.get(nextOne);
         if(!((neighborOne == null)||(neighborOne instanceof Flower)||(neighborOne instanceof Rock))){
             return false;
