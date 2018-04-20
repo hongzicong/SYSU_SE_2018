@@ -25,10 +25,12 @@ import java.awt.Color;
  * This class runs a world that contains box bugs. <br />
  * This class is not tested on the AP CS A and AB exams.
  */
-public class SpiralBugRunner 
+public final class SpiralBugRunner 
 {
-    final static int LOCATION_ROW = 5;
-    final static int LOCATION_COL = 5;
+    static final int LOCATION_ROW = 5;
+    static final int LOCATION_COL = 5;
+
+    static final int LENGTH = 3;
 
     private SpiralBugRunner(){}
 
@@ -36,7 +38,7 @@ public class SpiralBugRunner
     {
         UnboundedGrid grid = new UnboundedGrid<Actor>();
         ActorWorld world = new ActorWorld(grid);
-        SpiralBug bob = new SpiralBug(3);
+        SpiralBug bob = new SpiralBug(LENGTH);
         bob.setColor(Color.ORANGE);
         world.add(new Location(LOCATION_ROW, LOCATION_COL), bob);
         world.show();

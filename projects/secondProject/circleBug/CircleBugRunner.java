@@ -25,16 +25,18 @@ import java.awt.Color;
  * This class runs a world that contains box bugs. <br />
  * This class is not tested on the AP CS A and AB exams.
  */
-public class CircleBugRunner 
+public final class CircleBugRunner 
 {
-    final static int LOCATION_ROW = 5;
-    final static int LOCATION_COL = 5;
+    static final int LOCATION_ROW = 5;
+    static final int LOCATION_COL = 5;
+
+    static final int LENGTH = 6;
 
     private CircleBugRunner(){}
     public static void main(String[] args)
     {
         ActorWorld world = new ActorWorld();
-        CircleBug alice = new CircleBug(6);
+        CircleBug alice = new CircleBug(LENGTH);
         world.add(new Location(LOCATION_ROW, LOCATION_COL), alice);
         world.show();
     }
