@@ -27,12 +27,17 @@ import java.awt.Color;
  */
 public class ZBugRunner 
 {
+    final static int LOCATION_ROW = 5;
+    final static int LOCATION_COL = 5;
+    
+    private ZBugRunner(){}
+
     public static void main(String[] args)
     {
         ActorWorld world = new ActorWorld();
         ZBug alice = new ZBug(4);
         alice.setColor(Color.ORANGE);
-        world.add(new Location(0,0), alice);
+        world.add(new Location(LOCATION_ROW, LOCATION_COL), alice);
         world.show();
     }
 }

@@ -27,13 +27,18 @@ import java.awt.Color;
  */
 public class SpiralBugRunner 
 {
+    final static int LOCATION_ROW = 5;
+    final static int LOCATION_COL = 5;
+
+    private SpiralBugRunner(){}
+
     public static void main(String[] args)
     {
         UnboundedGrid grid = new UnboundedGrid<Actor>();
         ActorWorld world = new ActorWorld(grid);
         SpiralBug bob = new SpiralBug(3);
         bob.setColor(Color.ORANGE);
-        world.add(new Location(5, 5), bob);
+        world.add(new Location(LOCATION_ROW, LOCATION_COL), bob);
         world.show();
     }
 }

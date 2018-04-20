@@ -17,6 +17,7 @@
  */
 
 import info.gridworld.actor.Bug;
+import info.gridworld.grid.Location;
 
 /**
  * A <code>BoxBug</code> traces out a square "box" of a given size. <br />
@@ -24,6 +25,9 @@ import info.gridworld.actor.Bug;
  */
 public class ZBug extends Bug
 {
+
+    final static int COUNT_MAX = 3;
+
     private int steps;
     private int sideLength;
     private int count;
@@ -37,7 +41,7 @@ public class ZBug extends Bug
         steps = 0;
         count = 0;
         sideLength = length;
-        setDirection(90);
+        setDirection(Location.RIGHT);
     }
 
     /**
@@ -45,7 +49,7 @@ public class ZBug extends Bug
      */
     public void act()
     {
-        if (count == 3 || (!canMove() && steps != sideLength) ) {
+        if (count == COUNT_MAX || (!canMove() && steps != sideLength) ) {
             return;
         }
         if (steps < sideLength && canMove())
