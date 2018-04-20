@@ -53,21 +53,19 @@ public class ZBug extends Bug
             move();
             steps++;
         }
-        else
-        {
-            if (count == 0){
-                turn();
-                turn();
-                turn();
-            } else if (count == 1){
-                turn();
-                turn();
-                turn();
-                turn();
-                turn();
-            }
-            count ++;
-            steps = 0;
+        else if (count == 0){
+            turn();
+            turn();
+            turn();
+        } else if (count == 1){
+            turn();
+            turn();
+            turn();
+            turn();
+            turn();
         }
+        count ++;
+        steps = 0;
     }
+    
 }
