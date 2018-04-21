@@ -54,10 +54,12 @@ public class Jumper extends Actor
      */
     public void act()
     {
-        if (canJump())
-            jump();
-        else
-            turn();
+        if (canJump()){
+	    jump();	
+	}
+        else{
+	    turn();
+	}
     }
 
     /**
