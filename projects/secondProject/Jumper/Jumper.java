@@ -107,17 +107,17 @@ public class Jumper extends Actor {
             return false;
         }
         neighbor = gr.get(next);
-        return canBeJumpTo(neightbor);
+        return canBeJumpTo(neighbor);
         // ok to move into empty location or onto flower
         // not ok to move onto any other actor
     }
 
-    private boolean canBeJumpAcross(Actor neightbor){
-        return (neighbor == null) || (neighbor instanceof Flower) || (neighbor instanceof Rock);
+    private boolean canBeJumpAcross(Actor actor){
+        return (actor == null) || (actor instanceof Flower) || (actor instanceof Rock);
     }
 
-    private boolean canBeJumpTo(Actor neightbor){
-        return (neighbor == null) || (neighbor instanceof Flower);
+    private boolean canBeJumpTo(Actor actor){
+        return (actor == null) || (actor instanceof Flower);
     }
 
 }
