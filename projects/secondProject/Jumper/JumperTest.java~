@@ -7,7 +7,6 @@ import info.gridworld.actor.Actor;
 import info.gridworld.actor.Rock;
 import info.gridworld.actor.Flower;
 import info.gridworld.actor.ActorWorld;
-import info.gridworld.actor.Bug;
 
 import info.gridworld.grid.Location;
 import info.gridworld.grid.Grid;
@@ -66,7 +65,7 @@ public class JumperTest{
         Jumper jumper = new Jumper();
         jumper.setDirection(Location.RIGHT);
         world.add(new Location(LOCATION_ROW, LOCATION_COL), jumper);
-        Flower flower = new Flower();
+        Rock flower = new Flower();
         world.add(new Location(LOCATION_ROW, LOCATION_COL + HALF_DELTA), flower);
         world.step();
 		assertTrue(jumper.getLocation().equals(new Location(LOCATION_ROW,LOCATION_ROW + DELTA)));
