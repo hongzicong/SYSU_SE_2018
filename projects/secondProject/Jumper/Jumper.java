@@ -98,7 +98,7 @@ public class Jumper extends Actor {
         }
 
         Actor neighbor = gr.get(next);
-        if (!((neighbor == null) || (neighbor instanceof Flower) || (neighbor instanceof Rock))) {
+        if (!canBeJumpAcross(neighbor)) {
             return false;
         }
 
@@ -107,9 +107,17 @@ public class Jumper extends Actor {
             return false;
         }
         neighbor = gr.get(next);
-        return (neighbor == null) || (neighbor instanceof Flower) ;
+        return canBeJumpTo(neightbor);
         // ok to move into empty location or onto flower
         // not ok to move onto any other actor
+    }
+
+    private boolean canBeJumpAcross(Actor neightbor){
+        return (neighbor == null) || (neighbor instanceof Flower) || (neighbor instanceof Rock);
+    }
+
+    private boolean canBeJumpTo(Actor neightbor){
+        return (neighbor == null) || (neighbor instanceof Flower);
     }
 
 }
