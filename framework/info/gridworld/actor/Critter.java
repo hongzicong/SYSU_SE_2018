@@ -34,7 +34,7 @@ public class Critter extends Actor
      * A critter acts by getting a list of other actors, processing that list,
      * getting locations to move to, selecting one of them, and moving to the
      * selected location.
-     */
+     */ 
     public void act()
     {
         if (getGrid() == null)
