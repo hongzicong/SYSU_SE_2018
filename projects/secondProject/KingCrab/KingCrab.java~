@@ -38,7 +38,7 @@ public class KingCrab extends CrabCritter {
     public void processActors(ArrayList<Actor> actors) {
         for (Actor a : actors) {
             Location loc = a.getLocation();
-            int direction = getLocation().getDirectionToward(loc);
+            int direction = getDirectionToward(loc);
             Location newLoc = loc.getAdjacentLocation(direction);
             if(getGrid().isValid(newLoc)){
                 a.moveTo(newLoc);

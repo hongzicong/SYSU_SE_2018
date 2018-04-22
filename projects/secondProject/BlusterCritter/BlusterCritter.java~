@@ -107,15 +107,9 @@ public class BlusterCritter extends Critter
                 blue ++;
             }
         } else{
-            if (red > 0){
-                red --;
-            }
-            if (green > 0){
-                green --;
-            }
-            if (blue > 0){
-                blue --;
-            }
+            red = (int) (red * (1 - DARKENING_FACTOR));
+            green = (int) (red * (1 - DARKENING_FACTOR));
+            blue = (int) (red * (1 - DARKENING_FACTOR));
         }
         setColor(new Color(red, green, blue));
     }

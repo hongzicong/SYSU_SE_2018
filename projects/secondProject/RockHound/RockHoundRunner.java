@@ -34,7 +34,7 @@ public final class RockHoundRunner
     {
         ActorWorld world = new ActorWorld();
         
-        world.add(new RockHound(Color.GREEN));
+        world.add(new RockHound());
 
         // new three rocks for test
         world.add(new Rock());
