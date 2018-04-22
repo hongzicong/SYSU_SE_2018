@@ -14,7 +14,8 @@
  * @author Cay Horstmann
  */
 
-import info.gridworld.grid.Location;
+import info.gridworld.grid.*;
+import info.gridworld.actor.*;
 
 import java.util.List;
 import java.util.ArrayList;
