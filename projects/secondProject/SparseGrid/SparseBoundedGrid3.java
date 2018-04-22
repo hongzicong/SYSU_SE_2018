@@ -4,7 +4,7 @@ import info.gridworld.grid.*;
 import java.util.LinkedList;
 import java.util.ArrayList;
 
-public class SparseBoundedGrid<E> extends AbstractGrid<E>{
+public class SparseBoundedGrid3<E> extends AbstractGrid<E>{
 
     private ArrayList<LinkedList> occupantInColArr;
 
@@ -17,7 +17,7 @@ public class SparseBoundedGrid<E> extends AbstractGrid<E>{
      * @param rows number of rows in SparseBoundedGrid
      * @param cols number of columns in SparseBoundedGrid
      */
-    public SparseBoundedGrid(int rows, int cols)
+    public SparseBoundedGrid3(int rows, int cols)
     {
         if (rows <= 0){
             throw new IllegalArgumentException("rows <= 0");
