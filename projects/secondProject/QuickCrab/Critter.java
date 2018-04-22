@@ -37,8 +37,9 @@ public class Critter extends Actor
      */ 
     public void act()
     {
-        if (getGrid() == null)
+        if (getGrid() == null){
             return;
+        }
         List<Actor> actors = getActors();
         processActors(actors);
         List<Location> moveLocs = getMoveLocations();
@@ -72,8 +73,9 @@ public class Critter extends Actor
     {
         for (Actor a : actors)
         {
-            if (!(a instanceof Rock) && !(a instanceof Critter))
+            if (!(a instanceof Rock) && !(a instanceof Critter)){
                 a.removeSelfFromGrid();
+            }
         }
     }
 
@@ -104,8 +106,9 @@ public class Critter extends Actor
     public Location selectMoveLocation(List<Location> locs)
     {
         int n = locs.size();
-        if (n == 0)
+        if (n == 0){
             return getLocation();
+        }
         int r = (int) (Math.random() * n);
         return locs.get(r);
     }
@@ -124,9 +127,11 @@ public class Critter extends Actor
      */
     public void makeMove(Location loc)
     {
-        if (loc == null)
+        if (loc == null){
             removeSelfFromGrid();
-        else
+        }
+        else{
             moveTo(loc);
+        }
     }
 }
