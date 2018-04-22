@@ -17,7 +17,6 @@
  */
 
 import info.gridworld.actor.Actor;
-import info.gridworld.actor.Critter;
 import info.gridworld.grid.Grid;
 import info.gridworld.grid.Location;
 
@@ -42,7 +41,7 @@ public class CrabCritter extends Critter
      * front-right and to its front-left
      * @return a list of actors occupying these locations
      */
-    public ArrayList<Actor> getActors()
+    public List<Actor> getActors()
     {
         ArrayList<Actor> actors = new ArrayList<Actor>();
         int[] dirs =
@@ -61,7 +60,7 @@ public class CrabCritter extends Critter
     /**
      * @return list of empty locations immediately to the right and to the left
      */
-    public ArrayList<Location> getMoveLocations()
+    public List<Location> getMoveLocations()
     {
         ArrayList<Location> locs = new ArrayList<Location>();
         int[] dirs =
@@ -105,7 +104,7 @@ public class CrabCritter extends Critter
      * @return a set of valid locations that are neighbors of the current
      * location in the given directions
      */
-    public ArrayList<Location> getLocationsInDirections(int[] directions)
+    public List<Location> getLocationsInDirections(int[] directions)
     {
         ArrayList<Location> locs = new ArrayList<Location>();
         Grid gr = getGrid();

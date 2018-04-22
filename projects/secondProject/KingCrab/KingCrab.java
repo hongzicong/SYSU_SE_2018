@@ -17,7 +17,6 @@
  */
 
 import info.gridworld.actor.Actor;
-import info.gridworld.actor.Critter;
 import info.gridworld.grid.Grid;
 import info.gridworld.grid.Location;
 
@@ -35,7 +34,7 @@ public class KingCrab extends CrabCritter {
      * A KingCrab causes each actor that it processes to move one location further away from the KingCrab.
      * If the actor cannot move away, the KingCrab removes it from the grid.
      */
-    public void processActors(ArrayList<Actor> actors) {
+    public void processActors(List<Actor> actors) {
         for (Actor a : actors) {
             Location loc = a.getLocation();
             int direction = getLocation().getDirectionToward(loc);
