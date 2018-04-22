@@ -69,7 +69,7 @@ public class BlusterCritter extends Critter
         }
 
         for (Location neighborLoc : locs){
-            if (getGrid().get(neighborLoc) != null && getGrid().get(neighborLoc) instanceof Critter){
+            if (getGrid().get(neighborLoc) instanceof Critter){
                 actors.add(getGrid().get(neighborLoc));
             }
         }
