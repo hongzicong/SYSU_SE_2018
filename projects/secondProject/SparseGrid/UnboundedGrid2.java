@@ -82,15 +82,15 @@ public class UnboundedGrid2<E> extends AbstractGrid<E>{
         E oldOccupant = get(loc);
 
         if (loc.getRow() >= side || loc.getCol() >= side){
-            Object[][] tmp = occupantArray;
+            Object[][] tmp = occupantArr;
             int ant = side;
             while(loc.getRow() >= ant || loc.getCol() >= ant){
                 ant *= 2;
             }
-            occupantArray = new Object[ant][ant];
+            occupantArr = new Object[ant][ant];
             for (int r = 0; r < side; r++) {
                 for (int c = 0; c < side; c++)
-                    occupantArray[r][c] = tmp[r][c];
+                    occupantArr[r][c] = tmp[r][c];
             }
         }
 
