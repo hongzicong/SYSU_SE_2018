@@ -15,6 +15,7 @@
  */
 
 import info.gridworld.grid.Location;
+import info.gridworld.grid.Grid;
 
 import java.util.ArrayList;
 import java.util.List;
