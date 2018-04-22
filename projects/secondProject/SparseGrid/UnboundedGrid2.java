@@ -15,18 +15,18 @@ public class UnboundedGrid2<E> extends AbstractGrid<E>{
      */
     public UnboundedGrid2()
     {
-        int side = 16;
+        side = 16;
         occupantArr = new Object[side][side];
     }
 
     public int getNumRows()
     {
-        return -1;
+        return side;
     }
 
     public int getNumCols()
     {
-        return -1;
+        return side;
     }
 
     public boolean isValid(Location loc)
