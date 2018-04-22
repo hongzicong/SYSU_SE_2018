@@ -17,7 +17,6 @@
  */
 
 import info.gridworld.actor.Actor;
-import info.gridworld.actor.Critter;
 import info.gridworld.grid.Grid;
 import info.gridworld.grid.Location;
 
@@ -33,7 +32,6 @@ import java.util.List;
 public class BlusterCritter extends Critter
 {
 
-    private static final double DARKENING_FACTOR = 0.05;
     private static final int[] DELTA = {-2, -1, 0, 1, 2};
 
     private int mCourage;
@@ -50,9 +48,8 @@ public class BlusterCritter extends Critter
      * Postcondition: The state of all actors is unchanged.
      * @return a list of actors that this critter wishes to process.
      */
-    public ArrayList<Actor> getActors(){
+    public List<Actor> getActors(){
         ArrayList<Actor> actors = new ArrayList<Actor>();
-        Grid grid = getGrid();
         Location loc = getLocation();
 
         ArrayList<Location> locs = new ArrayList<Location>();
@@ -90,7 +87,7 @@ public class BlusterCritter extends Critter
      * location of this critter is unchanged.
      * @param actors the actors to be processed
      */
-    public void processActors(ArrayList<Actor> actors)
+    public void processActors(List<Actor> actors)
     {
         Color c = getColor();
         int red = c.getRed();
