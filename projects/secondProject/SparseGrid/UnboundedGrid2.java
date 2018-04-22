@@ -78,12 +78,22 @@ public class UnboundedGrid2<E> extends AbstractGrid<E>{
             throw new NullPointerException("obj == null");
         }
 
-        if (loc.getRow() >= side || loc.getCol() >= side){
-            biggerGrid();
-        }
-
         // Add the object to the grid.
         E oldOccupant = get(loc);
+
+        if (loc.getRow() >= side || loc.getCol() >= side){
+            Object[][] tmp = occupantArray;
+            int ant = side;
+            while(loc.getRow() >= ant || loc.getCol() >= ant){
+                ant *= 2;
+            }
+            occupantArray = new Object[ant][ant];
+            for (int r = 0; r < side; r++) {
+                for (int c = 0; c < side; c++)
+                    occupantArray[r][c] = tmp[r][c];
+            }
+        }
+
         occupantArr[loc.getRow()][loc.getCol()] = obj;
         return oldOccupant;
     }
