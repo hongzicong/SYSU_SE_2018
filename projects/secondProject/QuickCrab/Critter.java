@@ -38,9 +38,9 @@ public class Critter extends Actor
     {
         if (getGrid() == null)
             return;
-        ArrayList<Actor> actors = getActors();
+        List<Actor> actors = getActors();
         processActors(actors);
-        ArrayList<Location> moveLocs = getMoveLocations();
+        List<Location> moveLocs = getMoveLocations();
         Location loc = selectMoveLocation(moveLocs);
         makeMove(loc);
     }

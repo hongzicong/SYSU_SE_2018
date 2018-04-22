@@ -23,6 +23,7 @@ import info.gridworld.grid.Location;
 
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A <code>CrabCritter</code> looks at a limited set of neighbors when it eats and moves.
