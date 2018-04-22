@@ -66,6 +66,7 @@ public class QuickCrab extends CrabCritter
     }
 
     private void getLeftLoc(List<Location> locs, Location left){
+        Grid gr = getGrid();
         if (gr.isValid(left)){
             Location leftNext = left.getAdjacentLocation(getDirection() + Location.LEFT);
             if (gr.isValid(leftNext) && gr.get(left) == null && gr.get(leftNext) == null){
