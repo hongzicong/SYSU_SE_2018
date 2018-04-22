@@ -42,14 +42,17 @@ public class KingCrab extends CrabCritter {
             int direction = getLocation().getDirectionToward(loc);
 
             ArrayList<Location> possLocs = new ArrayList<>();
-            possLocs.add(loc.getAdjacentLocation(direction));
-            possLocs.add(loc.getAdjacentLocation(direction + Location.HALF_LEFT));
-            possLocs.add(loc.getAdjacentLocation(direction + Location.HALF_RIGHT));
-
-            for(Location tempLoc:possLocs){
-                if(!getGrid().isValid(tempLoc)){
-                    possLocs.remove(tempLoc);
-                }
+            loc1 = loc.getAdjacentLocation(direction);
+            loc2 = loc.getAdjacentLocation(direction + Location.HALF_LEFT);
+            loc3 = loc.getAdjacentLocation(direction + Location.HALF_RIGHT);
+            if(!getGrid().isValid(loc1)){
+                possLocs.add(loc1);
+            }
+            if(!getGrid().isValid(loc2)){
+                possLocs.add(loc2);
+            }
+            if(!getGrid().isValid(loc3)){
+                possLocs.add(loc3);
             }
 
             Location nextLoc = selectMoveLocation(possLocs);
