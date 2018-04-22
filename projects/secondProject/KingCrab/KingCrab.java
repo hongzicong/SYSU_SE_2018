@@ -23,6 +23,7 @@ import info.gridworld.grid.Location;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * A <code>KingCrab</code> looks at a limited set of neighbors when it eats and moves.
@@ -39,9 +40,22 @@ public class KingCrab extends CrabCritter {
         for (Actor a : actors) {
             Location loc = a.getLocation();
             int direction = getLocation().getDirectionToward(loc);
-            Location newLoc = loc.getAdjacentLocation(direction);
-            if(getGrid().isValid(newLoc)){
-                a.moveTo(newLoc);
+
+            ArrayList<Location> possLocs = new ArrayList<>();
+            possLocs.add(loc.getAdjacentLocation(direction));
+            possLocs.add(loc.getAdjacentLocation(direction + Location.HALF_LEFT));
+            possLocs.add(loc.getAdjacentLocation(direction + Location.HALF_RIGHT));
+
+            for(Location tempLoc:possLocs){
+                if(!getGrid().isValid(tempLoc)){
+                    possLocs.remove(tempLoc);
+                }
+            }
+
+            Location nextLoc = selectMoveLocation(possLocs);
+
+            if(!nextLoc.equals(loc)){
+                a.moveTo(nextLoc);
             } else{
                 a.removeSelfFromGrid();
             }
