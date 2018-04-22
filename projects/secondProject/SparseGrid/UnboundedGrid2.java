@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 public class UnboundedGrid2<E> extends AbstractGrid<E>{
 
-    private Object[][] occupantMap;
+    private Object[][] occupantArr;
     
     private int side;
 
@@ -16,7 +16,7 @@ public class UnboundedGrid2<E> extends AbstractGrid<E>{
     public UnboundedGrid2()
     {
         int side = 16;
-        occupantMap = new Object[side][side];
+        occupantArr = new Object[side][side];
     }
 
     public int getNumRows()
@@ -61,7 +61,7 @@ public class UnboundedGrid2<E> extends AbstractGrid<E>{
         if (loc.getRow() >= side || loc.getCol() >= side){
             return null;
         }
-        return (E) occupantArray[loc.getRow()][loc.getCol()]; // unavoidable warning
+        return (E) occupantArr[loc.getRow()][loc.getCol()]; // unavoidable warning
     }
 
     public E put(Location loc, E obj)
@@ -78,7 +78,7 @@ public class UnboundedGrid2<E> extends AbstractGrid<E>{
 
         // Add the object to the grid.
         E oldOccupant = get(loc);
-        occupantArray[loc.getRow()][loc.getCol()] = obj;
+        occupantArr[loc.getRow()][loc.getCol()] = obj;
         return oldOccupant;
     }
 
@@ -88,15 +88,15 @@ public class UnboundedGrid2<E> extends AbstractGrid<E>{
         int newSide = size * 2;
 
         // a new occupant map
-        Object[][] newOccupantMap = new Object[newSide][newSide];
+        Object[][] newOccupantArr = new Object[newSide][newSide];
 
         for(int i = 0; i < side; ++i){
             for(int j = 0; j < side; ++j){
-                newOccupantMap[i][j] = occupantMap[i][j];
+                newOccupantArr[i][j] = occupantArr[i][j];
             }
         }
 
-        occupantMap = newOccupantMap;
+        occupantArr = newOccupantArr;
         side = newSide;
     }
 
