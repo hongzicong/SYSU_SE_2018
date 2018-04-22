@@ -2,7 +2,7 @@ import info.gridworld.actor.Actor;
 import info.gridworld.actor.ActorWorld;
 import info.gridworld.grid.Location;
 import info.gridworld.actor.Bug;
-import info.gridworld.actor.CrabCritter;
+
 /**
  * This class runs a world with additional grid choices.
  */
