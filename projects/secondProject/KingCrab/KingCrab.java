@@ -55,10 +55,8 @@ public class KingCrab extends CrabCritter {
                 possLocs.add(loc3);
             }
 
-            Location nextLoc = selectMoveLocation(possLocs);
-
-            if(!nextLoc.equals(loc)){
-                a.moveTo(nextLoc);
+            if(!possLocs.isEmpty()){
+                a.moveTo(possLocs.get(0));
             } else{
                 a.removeSelfFromGrid();
             }
