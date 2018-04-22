@@ -4,7 +4,7 @@ public class OccupantInCol
     private int mCol;
     
     // constructor for OccupantIncol class
-    public OccupantInCol(int occupant,int col){
+    public OccupantInCol(Object occupant,int col){
         mOccupant = occupant;
         mCol = col;
     }
