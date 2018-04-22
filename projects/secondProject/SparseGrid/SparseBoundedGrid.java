@@ -124,6 +124,7 @@ public class SparseBoundedGrid<E> extends AbstractGrid<E>{
             for(OccupantInCol tempOccupantInCol: row){
                 if(loc.getCol() == tempOccupantInCol.getCol()){
                     row.remove(tempOccupantInCol);
+                    break;
                 }
             }
         }

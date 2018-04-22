@@ -17,6 +17,7 @@
  */
 
 import info.gridworld.actor.Actor;
+import info.gridworld.actor.Rock;
 import info.gridworld.grid.Location;
 
 import java.util.List;
@@ -43,7 +44,7 @@ public class RockHound extends Critter
     {
         for (Actor a : actors)
         {
-            if (!(a instanceof Critter)){
+            if (a instanceof Rock){
                 a.removeSelfFromGrid();
             }
         }

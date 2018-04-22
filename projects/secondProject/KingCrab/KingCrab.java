@@ -45,13 +45,13 @@ public class KingCrab extends CrabCritter {
             Location loc1 = loc.getAdjacentLocation(direction);
             Location loc2 = loc.getAdjacentLocation(direction + Location.HALF_LEFT);
             Location loc3 = loc.getAdjacentLocation(direction + Location.HALF_RIGHT);
-            if(getGrid().isValid(loc1)){
+            if(getGrid().isValid(loc1) && !(getGrid().get(loc1) instanceof CrabCritter)){
                 possLocs.add(loc1);
             }
-            if(getGrid().isValid(loc2)){
+            if(getGrid().isValid(loc2) && !(getGrid().get(loc2) instanceof CrabCritter)){
                 possLocs.add(loc2);
             }
-            if(getGrid().isValid(loc3)){
+            if(getGrid().isValid(loc3) && !(getGrid().get(loc3) instanceof CrabCritter)){
                 possLocs.add(loc3);
             }
 

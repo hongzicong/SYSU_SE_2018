@@ -19,6 +19,7 @@
 import info.gridworld.actor.Actor;
 import info.gridworld.grid.Grid;
 import info.gridworld.grid.Location;
+import info.gridworld.actor.Rock;
 
 import java.awt.Color;
 import java.util.ArrayList;
@@ -49,7 +50,7 @@ public class CrabCritter extends Critter
         for (Location loc : getLocationsInDirections(dirs))
         {
             Actor a = getGrid().get(loc);
-            if (a != null){
+            if (a != null && !(a instanceof Rock) && !(a instanceof CrabCritter)){
                 actors.add(a);
             }
         }
