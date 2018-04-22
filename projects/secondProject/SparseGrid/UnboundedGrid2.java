@@ -46,8 +46,9 @@ public class UnboundedGrid2<E> extends AbstractGrid<E>{
             {
                 // If there's an object at this location, put it in the array.
                 Location loc = new Location(r, c);
-                if (get(loc) != null)
+                if (get(loc) != null){
                     theLocations.add(loc);
+                }
             }
         }
 
@@ -67,11 +68,12 @@ public class UnboundedGrid2<E> extends AbstractGrid<E>{
 
     public E put(Location loc, E obj)
     {
-        if (!isValid(loc))
-            throw new IllegalArgumentException("Location " + loc
-                    + " is not valid");
-        if (obj == null)
+        if (!isValid(loc)){
+            throw new IllegalArgumentException("Location " + loc + " is not valid");
+        }
+        if (obj == null){
             throw new NullPointerException("obj == null");
+        }
 
         if (loc.getRow() >= side || loc.getCol() >= side){
             biggerGrid();

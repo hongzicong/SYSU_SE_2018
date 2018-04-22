@@ -4,11 +4,12 @@ import info.gridworld.grid.*;
 import java.util.LinkedList;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class SparseBoundedGrid2<E> extends AbstractGrid<E>{
 
     // a hash map to store
-    private HashMap<Location, E> occupantMap;
+    private Map<Location, E> occupantMap;
 
     private int mRows;
     private int mCols;
@@ -44,8 +45,7 @@ public class SparseBoundedGrid2<E> extends AbstractGrid<E>{
 
     public boolean isValid(Location loc)
     {
-        return 0 <= loc.getRow() && loc.getRow() < getNumRows()
-                && 0 <= loc.getCol() && loc.getCol() < getNumCols();
+        return 0 <= loc.getRow() && loc.getRow() < getNumRows() && 0 <= loc.getCol() && loc.getCol() < getNumCols();
     }
 
     // get the occupied locations
