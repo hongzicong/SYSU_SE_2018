@@ -17,6 +17,7 @@
  * @author Cay Horstmann
  */
 
+import info.gridworld.grid.Location;
 
 import java.util.ArrayList;
 import java.util.List;

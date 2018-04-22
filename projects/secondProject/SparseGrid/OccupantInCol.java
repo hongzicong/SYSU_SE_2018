@@ -10,7 +10,7 @@ public class OccupantInCol
     }
 
     // getter for occupant
-    public Obejct getOccupant(){
+    public Object getOccupant(){
         return mOccupant;
     }
 
