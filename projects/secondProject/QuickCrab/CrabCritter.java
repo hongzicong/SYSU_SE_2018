@@ -65,10 +65,11 @@ public class CrabCritter extends Critter
         ArrayList<Location> locs = new ArrayList<Location>();
         int[] dirs =
             { Location.LEFT, Location.RIGHT };
-        for (Location loc : getLocationsInDirections(dirs))
+        for (Location loc : getLocationsInDirections(dirs)){
             if (getGrid().get(loc) == null){
                 locs.add(loc);
             }
+        }
 
         return locs;
     }
