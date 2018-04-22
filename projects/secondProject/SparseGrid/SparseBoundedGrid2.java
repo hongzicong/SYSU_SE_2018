@@ -28,7 +28,7 @@ public class SparseBoundedGrid2<E> extends AbstractGrid<E>{
         }
         mRows = rows;
         mCols = cols;
-        occupantInColArr = new HashMap();
+        occupantMap = new HashMap();
     }
 
     public int getNumRows()

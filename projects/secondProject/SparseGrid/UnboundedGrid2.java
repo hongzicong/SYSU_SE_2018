@@ -84,8 +84,8 @@ public class UnboundedGrid2<E> extends AbstractGrid<E>{
 
     private void biggerGrid(){
         
-        // double the new size
-        int newSide = size * 2;
+        // double the new side
+        int newSide = side * 2;
 
         // a new occupant map
         Object[][] newOccupantArr = new Object[newSide][newSide];
@@ -112,7 +112,7 @@ public class UnboundedGrid2<E> extends AbstractGrid<E>{
 
         // Remove the object from the grid.
         E r = get(loc);
-        occupantArray[loc.getRow()][loc.getCol()] = null;
+        occupantArr[loc.getRow()][loc.getCol()] = null;
         return r;
     }
 
