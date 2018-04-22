@@ -114,7 +114,9 @@ public class SparseBoundedGrid<E> extends AbstractGrid<E>{
         E obj = get(loc);
 
         // It is not found
-        if (obj == null) return null;
+        if (obj == null){
+            return null;
+        }
         
         LinkedList<OccupantInCol> row = occupantInColArr.get(loc.getRow());
         
