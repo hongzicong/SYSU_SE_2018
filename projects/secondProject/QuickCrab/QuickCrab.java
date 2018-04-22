@@ -77,14 +77,17 @@ public class QuickCrab extends CrabCritter
         {
             double r = Math.random();
             int angle;
-            if (r < 0.5)
+            if (r < 0.5){
                 angle = Location.LEFT;
-            else
+            }
+            else{
                 angle = Location.RIGHT;
+            }
             setDirection(getDirection() + angle);
         }
-        else
+        else{
             super.makeMove(loc);
+        }
     }
 
 }
