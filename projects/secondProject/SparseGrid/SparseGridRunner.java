@@ -18,7 +18,7 @@ public final class SparseGridRunner
         world.addGridClass("SparseBoundedGrid");
         world.addGridClass("SparseBoundedGrid2");
         world.addGridClass("SparseBoundedGrid3");
-        world.addGridClass("UnboundedGrid1");
+        world.addGridClass("UnboundedGrid2");
 
         // Init a new Critter
         world.add(new Location(2, 2), new Bug());
