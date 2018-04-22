@@ -22,12 +22,12 @@ public class UnboundedGrid2<E> extends AbstractGrid<E>{
 
     public int getNumRows()
     {
-        return side;
+        return -1;
     }
 
     public int getNumCols()
     {
-        return side;
+        return -1;
     }
 
     public boolean isValid(Location loc)
