@@ -17,11 +17,11 @@
  */
 import info.gridworld.grid.Grid;
 import info.gridworld.actor.Actor;
-import info.gridworld.actor.Critter;
 import info.gridworld.grid.Location;
 import java.awt.Color;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A <code>ChameleonCritter</code> takes on the color of neighboring actors as
@@ -35,7 +35,7 @@ public class ChameleonKid extends ChameleonCritter
      * behind
      * @return a list of actors occupying these locations
      */
-    public ArrayList<Actor> getActors()
+    public List<Actor> getActors()
     {
         ArrayList<Actor> actors = new ArrayList<Actor>();
         int[] dirs =
@@ -59,7 +59,7 @@ public class ChameleonKid extends ChameleonCritter
      * @return a set of valid locations that are neighbors of the current
      * location in the given directions
      */
-    public ArrayList<Location> getLocationsInDirections(int[] directions)
+    public List<Location> getLocationsInDirections(int[] directions)
     {
         ArrayList<Location> locs = new ArrayList<Location>();
         Grid gr = getGrid();

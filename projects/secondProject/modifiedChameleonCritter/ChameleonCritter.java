@@ -17,10 +17,10 @@
  */
 
 import info.gridworld.actor.Actor;
-import info.gridworld.actor.Critter;
 import info.gridworld.grid.Location;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A <code>ChameleonCritter</code> takes on the color of neighboring actors as
@@ -36,7 +36,7 @@ public class ChameleonCritter extends Critter
      * Randomly selects a neighbor and changes this critter's color to be the
      * same as that neighbor's. If there are no neighbors, no action is taken.
      */
-    public void processActors(ArrayList<Actor> actors)
+    public void processActors(List<Actor> actors)
     {
         int n = actors.size();
         if (n == 0){

@@ -17,10 +17,9 @@
  */
 
 import info.gridworld.actor.Actor;
-import info.gridworld.actor.Critter;
 import info.gridworld.grid.Location;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A <code>ChameleonCritter</code> takes on the color of neighboring actors as
@@ -40,7 +39,7 @@ public class RockHound extends Critter
      * location of this critter is unchanged.
      * @param actors the actors to be processed
      */
-    public void processActors(ArrayList<Actor> actors)
+    public void processActors(List<Actor> actors)
     {
         for (Actor a : actors)
         {
