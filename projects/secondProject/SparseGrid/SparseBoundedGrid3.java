@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public class SparseBoundedGrid3<E> extends AbstractGrid<E>{
 
+    // also a linked list
     private ArrayList<LinkedList> occupantInColArr;
 
     private int mRows;

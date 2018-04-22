@@ -1,5 +1,6 @@
 public class OccupantInCol
 {
+    // the object in it
     private Object mOccupant;
     private int mCol;
     

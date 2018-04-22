@@ -7,6 +7,7 @@ import java.util.HashMap;
 
 public class SparseBoundedGrid2<E> extends AbstractGrid<E>{
 
+    // a hash map to store
     private HashMap<Location, E> occupantMap;
 
     private int mRows;

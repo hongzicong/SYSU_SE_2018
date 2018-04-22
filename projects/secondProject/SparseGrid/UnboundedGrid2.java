@@ -6,6 +6,7 @@ import java.util.HashMap;
 
 public class UnboundedGrid2<E> extends AbstractGrid<E>{
 
+    // an array to store
     private Object[][] occupantArr;
     
     private int side;
