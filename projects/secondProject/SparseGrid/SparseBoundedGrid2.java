@@ -3,10 +3,11 @@ import info.gridworld.grid.*;
 
 import java.util.LinkedList;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class SparseBoundedGrid2<E> extends AbstractGrid<E>{
 
-    private ArrayList<LinkedList> occupantInColArr;
+    private HashMap<Location, E> occupantMap;
 
     private int mRows;
     private int mCols;
@@ -27,10 +28,7 @@ public class SparseBoundedGrid2<E> extends AbstractGrid<E>{
         }
         mRows = rows;
         mCols = cols;
-        occupantInColArr = new ArrayList<>();
-        for(int i = 0; i < rows; ++i){
-            occupantInColArr.add(new LinkedList<OccupantInCol>());
-        }
+        occupantInColArr = new HashMap();
     }
 
     public int getNumRows()
@@ -55,15 +53,8 @@ public class SparseBoundedGrid2<E> extends AbstractGrid<E>{
         ArrayList<Location> theLocations = new ArrayList<Location>();
 
         // Look at all grid locations.
-        for (int r = 0; r < getNumRows(); r++)
-        {
-            LinkedList<OccupantInCol> row = occupantInColArr.get(r);
-            if (row != null){
-                for (OccupantInCol tempOccupantInCol:row){
-                    Location loc = new Location(r, tempOccupantInCol.getCol());
-                    theLocations.add(loc);
-                }
-            }
+        for (Location loc : occupantMap.keySet()){
+            theLocations.add(loc);
         }
 
         return theLocations;
@@ -75,16 +66,7 @@ public class SparseBoundedGrid2<E> extends AbstractGrid<E>{
             throw new IllegalArgumentException("Location " + loc + " is not valid");
         }
 
-        LinkedList<OccupantInCol> row = occupantInColArr.get(loc.getRow());
-        
-        if(row != null){
-            for(OccupantInCol tempOccupantInCol: row){
-                if(loc.getCol() == tempOccupantInCol.getCol()){
-                    return (E)tempOccupantInCol.getOccupant(); //must cast to E
-                }
-            }
-        }
-        return null;
+        return occupantMap.get(loc); 
     }
 
     public E put(Location loc, E obj)
@@ -96,11 +78,7 @@ public class SparseBoundedGrid2<E> extends AbstractGrid<E>{
             throw new NullPointerException("obj == null");
         }
         
-        // Add the object to the grid.
-        E oldOccupant = remove(loc);
-
-        occupantInColArr.get(loc.getRow()).add(new OccupantInCol(obj, loc.getCol()));
-        return oldOccupant;
+        return occupantMap.put(loc, obj); 
     }
 
     public E remove(Location loc)
@@ -109,23 +87,7 @@ public class SparseBoundedGrid2<E> extends AbstractGrid<E>{
             throw new IllegalArgumentException("Location " + loc + " is not valid");
         }
         
-        // Remove the object from the grid.
-        E obj = get(loc);
-
-        // It is not found
-        if (obj == null) return null;
-        
-        LinkedList<OccupantInCol> row = occupantInColArr.get(loc.getRow());
-        
-        if(row != null){
-            for(OccupantInCol tempOccupantInCol: row){
-                if(loc.getCol() == tempOccupantInCol.getCol()){
-                    row.remove(tempOccupantInCol);
-                }
-            }
-        }
-
-        return obj;
+        return occupantMap.remove(loc); 
 
     }
 
