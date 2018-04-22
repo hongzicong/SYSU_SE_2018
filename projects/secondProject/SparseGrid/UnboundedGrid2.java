@@ -89,6 +89,7 @@ public class UnboundedGrid2<E> extends AbstractGrid<E>{
                 for (int c = 0; c < side; c++)
                     occupantArr[r][c] = tmp[r][c];
             }
+            side = ant;
         }
 
         occupantArr[loc.getRow()][loc.getCol()] = obj;
