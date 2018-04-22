@@ -68,8 +68,9 @@ public class ChameleonKid extends ChameleonCritter
         for (int d : directions)
         {
             Location neighborLoc = loc.getAdjacentLocation(getDirection() + d);
-            if (gr.isValid(neighborLoc))
+            if (gr.isValid(neighborLoc)){
                 locs.add(neighborLoc);
+            }
         }
         return locs;
     }
