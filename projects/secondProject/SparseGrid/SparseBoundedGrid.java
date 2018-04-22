@@ -3,7 +3,6 @@ import info.gridworld.grid.*;
 
 import java.util.LinkedList;
 import java.util.ArrayList;
-import java.util.List;
 
 public class SparseBoundedGrid<E> extends AbstractGrid<E>{
 
@@ -51,7 +50,7 @@ public class SparseBoundedGrid<E> extends AbstractGrid<E>{
     }
 
     // get the occupied locations
-    public List<Location> getOccupiedLocations()
+    public ArrayList<Location> getOccupiedLocations()
     {
         ArrayList<Location> theLocations = new ArrayList<Location>();
 
