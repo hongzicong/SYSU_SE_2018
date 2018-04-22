@@ -111,7 +111,7 @@ public class SparseBoundedGrid<E> extends AbstractGrid<E>{
         }
         
         // Remove the object from the grid.
-        E oldOccupant = get(loc);
+        E obj = get(loc);
 
         // It is not found
         if (obj == null) return null;
