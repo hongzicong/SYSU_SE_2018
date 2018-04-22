@@ -23,6 +23,7 @@ import info.gridworld.grid.Location;
 
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A <code>BlusterCritter</code> looks at a limited set of neighbors when it eats and moves.
@@ -35,8 +36,7 @@ public class QuickCrab extends CrabCritter
     /**
      * @return list of empty locations immediately to the right and to the left
      */
-    public ArrayList<Location> getMoveLocations()
-    {
+    public List<Location> getMoveLocations(){
         ArrayList<Location> locs = new ArrayList<Location>();
         
         Location loc = getLocation();
@@ -52,7 +52,7 @@ public class QuickCrab extends CrabCritter
         return locs;
     }
 
-    private void getRightLoc(ArrayList<Location> locs, Location right){
+    private void getRightLoc(List<Location> locs, Location right){
         Grid gr = getGrid();
         if (gr.isValid(right)){
             Location rightNext = right.getAdjacentLocation(getDirection() + Location.RIGHT);
@@ -65,7 +65,7 @@ public class QuickCrab extends CrabCritter
         }
     }
 
-    private void getLeftLoc(ArrayList<Location> locs, Location left){
+    private void getLeftLoc(List<Location> locs, Location left){
         Grid gr = getGrid();
         if (gr.isValid(left)){
             Location leftNext = left.getAdjacentLocation(getDirection() + Location.LEFT);
