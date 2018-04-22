@@ -68,52 +68,30 @@ public class UnboundedGrid2<E> extends AbstractGrid<E>{
 
     public E put(Location loc, E obj)
     {
-        if (loc == null){
+        if (loc == null)
             throw new NullPointerException("loc == null");
-        }
-        if (!isValid(loc)){
-            throw new IllegalArgumentException("Location " + loc + " is not valid");
-        }
-        if (obj == null){
+        if (obj == null)
             throw new NullPointerException("obj == null");
-        }
 
-        // Add the object to the grid.
+        if (!isValid(loc))
+            throw new IllegalArgumentException("Location " + loc + " is not valid");
+
         E oldOccupant = get(loc);
-
-        if (loc.getRow() >= side || loc.getCol() >= side){
-            Object[][] tmp = occupantArr;
-            int ant = side;
-            while(loc.getRow() >= ant || loc.getCol() >= ant){
-                ant *= 2;
-            }
-            occupantArr = new Object[ant][ant];
-            for (int r = 0; r < side; r++) {
-                for (int c = 0; c < side; c++)
-                    occupantArr[r][c] = tmp[r][c];
-            }
+        if (loc.getRow() < side && loc.getCol() < side) {
+            occupantArr[loc.getRow()][loc.getCol()] = obj;
+        } else {
+          Object[][] tmp = occupantArr;
+          int ant = side;
+          while(loc.getRow() >= ant || loc.getCol() >= ant)
+               ant *= 2;
+               occupantArr = new Object[ant][ant];
+          for (int r = 0; r < side; r++) {
+               for (int c = 0; c < side; c++)
+               occupantArr[r][c] = tmp[r][c];
+          }
+          occupantArr[loc.getRow()][loc.getCol()] = obj;
         }
-
-        occupantArr[loc.getRow()][loc.getCol()] = obj;
         return oldOccupant;
-    }
-
-    private void biggerGrid(){
-        
-        // double the new side
-        int newSide = side * 2;
-
-        // a new occupant map
-        Object[][] newOccupantArr = new Object[newSide][newSide];
-
-        for(int i = 0; i < side; ++i){
-            for(int j = 0; j < side; ++j){
-                newOccupantArr[i][j] = occupantArr[i][j];
-            }
-        }
-
-        occupantArr = newOccupantArr;
-        side = newSide;
     }
 
     public E remove(Location loc)
