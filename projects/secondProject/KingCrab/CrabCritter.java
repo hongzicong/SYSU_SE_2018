@@ -90,8 +90,9 @@ public class CrabCritter extends Critter
             }
             setDirection(getDirection() + angle);
         }
-        else
+        else{
             super.makeMove(loc);
+        }
     }
     
     /**
