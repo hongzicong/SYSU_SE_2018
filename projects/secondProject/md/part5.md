@@ -230,10 +230,58 @@ In `BoundedGrid`, `isValid` will be called before every access to the element in
 
 ```
 // @file: info/gridworld/grid/BoundedGrid.java
-// @line: 95~99
+// @line: 60~64, 95~99
+public boolean isValid(Location loc)
+{
+    return 0 <= loc.getRow() && loc.getRow() < getNumRows()
+            && 0 <= loc.getCol() && loc.getCol() < getNumCols();
+}
 if (!isValid(loc))
     throw new IllegalArgumentException("Location " + loc
             + " is not valid");
 if (obj == null)
     throw new NullPointerException("obj == null");
 ```
+
+
+3. `O(1)`,`O(logn)`. Becasue `HashMap` use hash function to access the element and `TreeMap` use tree structure to store the element.
+
+```
+// @file: info/gridworld/grid/UnboundedGrid.java
+// @line: 33
+private Map<Location, E> occupantMap;
+```
+
+4. `HashMap` stores its value in the hash table and `TreeMap` stores its value in the balanced binary tree so the order of all values in the key set will be different.
+
+```
+// @file: info/gridworld/grid/UnboundedGrid.java
+// @line: 33
+private Map<Location, E> occupantMap;
+```
+
+5. Yes, the time complexity of `getOccupiedLocations` is reduced to `O(n)` instead of `O(r*c)` where n is the count of items in the grid, r is the count of rows and c is the count of columns. But it needs more space because it needs to store position and value in the key pair.
+
+```
+// @file: info/gridworld/grid/UnboundedGrid.java
+// @line: 33, 71~74
+private Map<Location, E> occupantMap;
+for (int r = 0; r < getNumRows(); r++)
+{
+    for (int c = 0; c < getNumCols(); c++)
+    {
+```
+
+|Methods|SparseGridNode version|LinkedList<OccupantInCol> version|HashMap version|TreeMap version|
+|-|-|-|-|-|
+|getNeighbors|O(c)|O(c)|O(1)|O(logn)|
+|getEmptyAdjacentLocations|O(c)|O(c)|O(1)|O(logn)|
+|getOccupiedAdjacentLocations|O(c)|O(c)|O(1)|O(logn)|
+|getOccupiedLocations|O(r+n)|O(r+n)|O(n)|O(n)|
+|get|O(c)|O(c)|O(1)|O(logn)|
+|put|O(c)|O(c)|O(1)|O(logn)|
+|remove|O(c)|O(c)|O(1)|O(logn)|
+
+where r is number of rows, c is number of columns and n is number of occupied locations.
+
+The time complexity of `get` is `O(1)` and `put` is `O(1)` within the current array bound. But if array needs to be resized, the time complexity is `O(n*n)` because of the need of copying.
