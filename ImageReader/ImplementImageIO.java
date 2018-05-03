@@ -11,15 +11,16 @@ public class ImplementImageIO implements ImageIO {
 
     // const used to denote as the shift offset
     // used to shift 3 bytes 
-    private final int OFFSET_24BIT = 24;
+    private static final int OFFSET_24BIT = 24;
     
     // used to shift 2 bytes
-    private final int OFFSET_16BIT = 16;
+    private static final int OFFSET_16BIT = 16;
     
     // used to shift 1 bytes
-    private final int OFFSET_8BIT = 8;
+    private static final int OFFSET_8BIT = 8;
 
-    private final int HEAD_SIZE = 54;
+    // used to specify the size of the head
+    private static final int HEAD_SIZE = 54;
 
     // can combine 4 bytes into a int
     private int byte2int(byte b1, byte b2, byte b3, byte b4){

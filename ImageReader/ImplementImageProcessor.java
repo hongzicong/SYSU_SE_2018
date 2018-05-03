@@ -10,13 +10,13 @@ public class ImplementImageProcessor implements ImageProcessor {
 
     // const used to denote as the shift offset
     // used to shift 3 bytes 
-    private final int OFFSET_24BIT = 24;
+    private static final int OFFSET_24BIT = 24;
     
     // used to shift 2 bytes
-    private final int OFFSET_16BIT = 16;
+    private static final int OFFSET_16BIT = 16;
     
     // used to shift 1 bytes
-    private final int OFFSET_8BIT = 8;
+    private static final int OFFSET_8BIT = 8;
 
 
     public Image showChanelR(Image sourceImage){
