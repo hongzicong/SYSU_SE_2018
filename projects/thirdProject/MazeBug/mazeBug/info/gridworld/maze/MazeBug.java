@@ -170,7 +170,8 @@ public class MazeBug extends Bug {
 
 		if (g.isValid(next)) {  
             Actor actor = gr.get(next);  
-              
+			  
+			// if reach to the goal rock
             if(actor instanceof Rock && actor.getColor().equals(Color.RED) ){  
                 isEnd = true; 
 			}  
