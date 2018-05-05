@@ -1,6 +1,8 @@
 package solution;
 
 import java.util.ArrayList;
+import java.util.Queue;
+import java.util.List;
 
 import jigsaw.Jigsaw;
 import jigsaw.JigsawNode;
@@ -10,6 +12,12 @@ import jigsaw.JigsawNode;
  * 在此类中填充算法，完成重拼图游戏（N-数码问题）
  */
 public class Solution extends Jigsaw {
+
+    private List<JigsawNode> solutionPath;  // 解路径：用以保存从起始状态到达目标状态的移动路径中的每一个状态节点
+    private int searchedNodesNum;           // 已访问节点数：用以记录所有访问过的节点的数量
+
+    private Queue<JigsawNode> exploreList;  // 用以保存已发现但未访问的节点
+    private Set<JigsawNode> visitedList;    // 用以保存已发现的节点
 
     /**
      * 拼图构造函数
@@ -35,7 +43,7 @@ public class Solution extends Jigsaw {
      */
     public boolean BFSearch(JigsawNode bNode, JigsawNode eNode) {
         
-        PrintWriter pw = new PrintWriter(new FileWriter("BFSearchDialog.txt")); 
+        PrintWriter pw = new PrintWriter(new FileWriter("BFSearchDialog.txt"));
 
         boolean isFound;
 
@@ -45,7 +53,6 @@ public class Solution extends Jigsaw {
             if(currentJNode.equals(eNode)){
                 isFound = true;
                 
-                solutionPath = new ArrayList<JigsawNode>();
                 JigsawNode temp = currentJNode;
                 while (temp != null) {  
                     solutionPath.add(temp);  
@@ -83,7 +90,6 @@ public class Solution extends Jigsaw {
         }
         return resultJNodes;
     }
-
 
     /**
      *（Demo+实验二）计算并修改状态节点jNode的代价估计值:f(n)
