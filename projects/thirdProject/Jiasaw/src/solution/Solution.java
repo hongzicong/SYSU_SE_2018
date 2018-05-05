@@ -119,12 +119,17 @@ public class Solution extends Jigsaw {
      */
     public void estimateValue(JigsawNode jNode) {
         int s = 0; // 后续节点不正确的数码个数
+        int d = 0;
         int dimension = JigsawNode.getDimension();
         for (int index = 1; index < dimension * dimension; index++) {
             if (jNode.getNodesState()[index] + 1 != jNode.getNodesState()[index + 1]) {
                 s++;
             }
+            d += Math.abs(jNode.getNodesState()[index] - index);
         }
-        jNode.setEstimatedValue(s);
+
+        int sum = (int)(s + dist);
+
+        jNode.setEstimatedValue(sum);
     }
 }
