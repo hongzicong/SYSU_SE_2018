@@ -50,7 +50,6 @@ public class MazeBug extends Bug {
 	 */
 	public MazeBug() {
 		setColor(Color.GREEN);
-		last = new Location(0, 0);
 	}
 
 	/**
@@ -114,7 +113,7 @@ public class MazeBug extends Bug {
 				Actor actor = gr.get(tempLoc);
 				if(actor instanceof Rock && actor.getColor().equals(Color.RED)){
 					next = tempLoc;
-					ArrayList<Location> tempArr = new ArrayList<>();
+					ArrayList<Location> tempArr = new ArrayList<Location>();
 					tempArr.add(tempLoc);
 					return tempArr;
 				} else if(actor == null){
@@ -168,7 +167,7 @@ public class MazeBug extends Bug {
 
 		next = getNextPos(canMovePosList);
 
-		if (g.isValid(next)) {  
+		if (gr.isValid(next)) {  
             Actor actor = gr.get(next);  
 			  
 			// if reach to the goal rock
@@ -183,7 +182,7 @@ public class MazeBug extends Bug {
 			setDirection(direct);
 				
 			// update the probability
-			probability[(direct / 90 + 3) % 4] += 1;
+			directProb[(direct / 90 + 3) % 4] += 1;
 			
             ArrayList<Location> temp = crossLocation.pop();  
             temp.add(next);  
@@ -211,18 +210,18 @@ public class MazeBug extends Bug {
 			Actor goal = gr.get(loc);  
 			if (goal instanceof Rock && goal.getColor().equals(Color.RED)){  
 				// bug in north of goal, so it needs to go south
-				if(getLocation().getRow() < goal.getRow()){  
-					probability[SOUTH_PROB] += 5;  
+				if(getLocation().getRow() < loc.getRow()){  
+					directProb[SOUTH_PROB] += 5;  
 				// bug in south of goal, so it needs to go north
 				} else { 
-					probability[NORTH_PROB] += 5;  
+					directProb[NORTH_PROB] += 5;  
 				} 
 				// bug in west of goal, so it needs to go east
-				if(getLocation().getCol() < goal.getCol()){  
-					probability[EAST_PROB] += 5;
+				if(getLocation().getCol() < loc.getCol()){  
+					directProb[EAST_PROB] += 5;
 				// bug in east of goal, so it needs to go west
 				}else {  
-					probability[WEST_PROB] += 5;  
+					directProb[WEST_PROB] += 5;  
 				}  
 				return;  
 			} 
@@ -248,7 +247,7 @@ public class MazeBug extends Bug {
 
 				int direct = loc.getDirectionToward(oldLoc);
 
-				if (gr.isValid(returnLocation)) {  
+				if (gr.isValid(oldLoc)) {  
                     setDirection(direct);  
                     moveTo(oldLoc);  
                     stepCount ++;
@@ -256,7 +255,7 @@ public class MazeBug extends Bug {
                     removeSelfFromGrid();  
 				}
 				
-				probability[(direct / 90 + 5) % 4] -= 1;
+				directProb[(direct / 90 + 5) % 4] -= 1;
 
 				leaveFlower(loc);
 			}
@@ -272,7 +271,7 @@ public class MazeBug extends Bug {
 	private Location getNextPos(ArrayList<Location> validLoc){
 		
 		Location loc = getLocation();
-		ArrayList<Integer> tempDirect = new ArrayList<>();
+		ArrayList<Integer> tempDirect = new ArrayList<Integer>();
 
 		for(Location tempLoc : validLoc){
 			tempDirect.add((loc.getDirectionToward(tempLoc) / 90 + 3) % 4);
@@ -280,20 +279,20 @@ public class MazeBug extends Bug {
 		
 		int sum = 0;
 		for(Integer i : tempDirect){
-			sum += probability[i];
+			sum += directProb[i];
 		}
 		int randNum = new Random().nextInt(sum);
 		
 		int i = 0;
 		int low = 0;
-		int high = probability[tempDirect[0]];
-		for(; i < tempDirect.size(); low += probability[tempDirect[i]], high += probability[tempDirect[i + 1]], ++i){
-			if(low <= randRange && randNum < high){
+		int high = directProb[tempDirect.get(0)];
+		for(; i < tempDirect.size(); low += directProb[tempDirect.get(i)], high += directProb[tempDirect.get(i + 1)], ++i){
+			if(low <= randNum && randNum < high){
 				break;
 			}
 		}
 
-		return validLoc[i];
+		return validLoc.get(i);
 	}
 
 }
