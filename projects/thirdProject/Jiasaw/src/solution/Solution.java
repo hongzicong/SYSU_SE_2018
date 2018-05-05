@@ -8,6 +8,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.ArrayList;
 
+import java.io.PrintWriter;
+import java.io.FileWriter;
+
 import jigsaw.Jigsaw;
 import jigsaw.JigsawNode;
 
@@ -40,6 +43,9 @@ public class Solution extends Jigsaw {
      * @return 搜索成功时为true,失败为false
      */
     public boolean BFSearch(JigsawNode bNode, JigsawNode eNode) {
+
+        String filePath = "BFSearchDialog.txt";  
+        PrintWriter pw = new PrintWriter(new FileWriter(filePath));  
 
         beginJNode = bNode;
         endJNode = eNode;
@@ -80,13 +86,8 @@ public class Solution extends Jigsaw {
             }
         }
 
-        System.out.println("Jigsaw BF Search Result:");
-        System.out.println("Begin state:" + getBeginJNode().toString());
-        System.out.println("End state:" + getEndJNode().toString());
-        // System.out.println("Solution Path: ");
-        // System.out.println(this.getSolutionPath());
-        System.out.println("Total number of searched nodes:" + getSearchedNodesNum());
-        System.out.println("Depth of the current node is:" + getCurrentJNode().getNodeDepth());
+        this.printResult(pw);  
+        pw.close();
 
         return isFound;
     }
