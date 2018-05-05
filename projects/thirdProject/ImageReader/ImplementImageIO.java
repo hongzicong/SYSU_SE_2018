@@ -2,6 +2,9 @@
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.image.MemoryImageSource;
+import java.awt.iamge.BufferedImage;
+import java.awt.Graphics2D;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -74,6 +77,7 @@ public class ImplementImageIO implements IImageIO {
         try{
             BufferedImage buffer = new BufferedImage(image.getWidth(null), image.getHeight(null), BufferedImage.TYPE_INT_RGB);
             
+            // used to draw the image into buffered image
             Graphics2D graph = buffer.createGraphics();
             graph.drawImage(image, 0, 0, null);
             graph.dispose();

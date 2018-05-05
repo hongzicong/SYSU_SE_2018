@@ -8,40 +8,29 @@ import java.awt.Image;
 
 public class ImplementImageProcessor implements IImageProcessor {
 
-    // const used to denote as the shift offset
-    // used to shift 3 bytes 
-    private static final int OFFSET_24BIT = 24;
-    
-    // used to shift 2 bytes
-    private static final int OFFSET_16BIT = 16;
-    
-    // used to shift 1 bytes
-    private static final int OFFSET_8BIT = 8;
-
-
     public Image showChanelR(Image sourceImage){
-        ColorFilter grayFilter = new ColorFilter(ColorNum.RED);  
+        RGBFilter grayFilter = new RGBFilter(ColorNum.RED);  
         Toolkit toolKit = Toolkit.getDefaultToolkit();  
         Image img = toolKit.createImage(new FilteredImageSource(sourceImage.getSource(), grayFilter));  
         return img; 
     }
 
     public Image showChanelG(Image sourceImage){
-        ColorFilter grayFilter = new ColorFilter(ColorNum.GREEN);  
+        RGBFilter grayFilter = new RGBFilter(ColorNum.GREEN);  
         Toolkit toolKit = Toolkit.getDefaultToolkit();  
         Image img = toolKit.createImage(new FilteredImageSource(sourceImage.getSource(), grayFilter));  
         return img; 
     }
 
     public Image showChanelB(Image sourceImage){
-        ColorFilter grayFilter = new ColorFilter(ColorNum.BLUE);  
+        RGBFilter grayFilter = new RGBFilter(ColorNum.BLUE);  
         Toolkit toolKit = Toolkit.getDefaultToolkit();  
         Image img = toolKit.createImage(new FilteredImageSource(sourceImage.getSource(), grayFilter));  
         return img; 
     }
 
     public Image showGray(Image sourceImage){
-        ColorFilter grayFilter = new ColorFilter(ColorNum.GREY);  
+        RGBFilter grayFilter = new RGBFilter(ColorNum.GREY);  
         Toolkit toolKit = Toolkit.getDefaultToolkit();  
         Image img = toolKit.createImage(new FilteredImageSource(sourceImage.getSource(), grayFilter));  
         return img; 
@@ -54,6 +43,17 @@ enum ColorNum{
 }
 
 class RGBFilter extends RGBImageFilter{  
+
+    
+    // const used to denote as the shift offset
+    // used to shift 3 bytes 
+    private static final int OFFSET_24BIT = 24;
+    
+    // used to shift 2 bytes
+    private static final int OFFSET_16BIT = 16;
+    
+    // used to shift 1 bytes
+    private static final int OFFSET_8BIT = 8;
 
     // used to specify the color num
     private ColorNum colorNum;  
