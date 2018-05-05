@@ -1,5 +1,7 @@
 package solution;
 
+import java.util.ArrayList;
+
 import jigsaw.Jigsaw;
 import jigsaw.JigsawNode;
 
@@ -32,7 +34,54 @@ public class Solution extends Jigsaw {
      * @return 搜索成功时为true,失败为false
      */
     public boolean BFSearch(JigsawNode bNode, JigsawNode eNode) {
-        return true;
+        
+        PrintWriter pw = new PrintWriter(new FileWriter("BFSearchDialog.txt")); 
+
+        boolean isFound;
+
+        exploreList.addElement(bNode);
+        currentJNode = bNode;
+        while(!exploreList.isEmpty()){
+            if(currentJNode.equals(eNode)){
+                isFound = true;
+                
+                solutionPath = new ArrayList<JigsawNode>();
+                JigsawNode temp = currentJNode;
+                while (temp != null) {  
+                    solutionPath.add(temp);  
+                    temp = temp.getParent();  
+                }
+                
+                break;
+            } else {
+                visitedList.addElement(currentJNode);
+                List<JigsawNode> adjacentNodes = getAdjJNodes(currentJNode);
+                for(JigsawNode temp : adjacentNodes){
+                    exploreList.addElement(temp);
+                }
+                exploreList.remove(0);
+                currentJNode = exploreList.firstElement();
+                visitedList.addElement(currentJNode);
+                searchedNodesNum += 1;
+            }
+        }
+
+        printResult(pw);
+        pw.close();
+
+        return isFound;
+    }
+
+    private List<JigsawNode> getAdjJNodes(JigsawNode jigsawNode){
+        ArrayList<JigsawNode> resultJNodes = new ArrayList<>();
+        for(int i = 0; i < 4; ++i){
+            JigsawNode temp = new JigsawNode(jigsawNode);
+            temp.move(i);
+            if(!visitedList.contains(temp) && !exploreList.contains(temp)){
+                resultJNodes.add(temp);
+            }
+        }
+        return resultJNodes;
     }
 
 

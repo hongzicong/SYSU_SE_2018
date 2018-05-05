@@ -25,11 +25,11 @@ public abstract class Jigsaw {
     protected JigsawNode endJNode;          // 拼图的目标状态节点
     protected JigsawNode currentJNode;      // 拼图的当前状态节点
 
-    private List<JigsawNode> solutionPath;  // 解路径：用以保存从起始状态到达目标状态的移动路径中的每一个状态节点
-    private int searchedNodesNum;           // 已访问节点数：用以记录所有访问过的节点的数量
+    protected List<JigsawNode> solutionPath;  // 解路径：用以保存从起始状态到达目标状态的移动路径中的每一个状态节点
+    protected int searchedNodesNum;           // 已访问节点数：用以记录所有访问过的节点的数量
 
-    private Queue<JigsawNode> exploreList;  // 用以保存已发现但未访问的节点
-    private Set<JigsawNode> visitedList;    // 用以保存已发现的节点
+    protected Queue<JigsawNode> exploreList;  // 用以保存已发现但未访问的节点
+    protected Set<JigsawNode> visitedList;    // 用以保存已发现的节点
 
     /**
      * 拼图构造函数
