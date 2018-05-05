@@ -1,4 +1,5 @@
 import org.junit.Test;
+import org.junit.Before;
 
 import java.awt.Image;
 import java.awt.image.BufferedImage;
