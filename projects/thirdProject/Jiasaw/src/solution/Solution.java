@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 import java.io.PrintWriter;
+import java.io.IOException;
 import java.io.FileWriter;
 
 import jigsaw.Jigsaw;
@@ -42,7 +43,7 @@ public class Solution extends Jigsaw {
      * @param eNode - 目标状态节点
      * @return 搜索成功时为true,失败为false
      */
-    public boolean BFSearch(JigsawNode bNode, JigsawNode eNode) {
+    public boolean BFSearch(JigsawNode bNode, JigsawNode eNode) throws IOException{
 
         String filePath = "BFSearchDialog.txt";  
         PrintWriter pw = new PrintWriter(new FileWriter(filePath));  
