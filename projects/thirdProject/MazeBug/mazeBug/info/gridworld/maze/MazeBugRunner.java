@@ -12,7 +12,7 @@ import java.awt.Color;
  */
 public final class MazeBugRunner
 {
-    private MazeBug(){}
+    private MazeBugRunner(){}
 
     public static void main(String[] args)
     {
