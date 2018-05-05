@@ -66,11 +66,14 @@ public class MazeBug extends Bug {
 			ArrayList<Location> firstList = new ArrayList<Location>();  
 			firstList.add(local);
 			crossLocation.push(firstList);
+		}
 
-			// init the probability
+		// every 30 steps should update the probability of each direction
+		if(stepCount % 30 == 0){
 			guessDirectProb();
 		}
 
+		// check if there has road to go
 		boolean willMove = canMove();
 
 		if (isEnd == true) {
@@ -92,7 +95,7 @@ public class MazeBug extends Bug {
 
 	/**
 	 * Find all positions that can be move to.
-	 * 
+	 * The position has constraint that only four directions
 	 * @param loc
 	 *            the location to detect.
 	 * @return List of positions.
@@ -163,7 +166,6 @@ public class MazeBug extends Bug {
 		// change next location and last location
 		ArrayList<Location> canMovePosList = getValid(loc);
 
-		int directPos = 0;
 		next = getNextPos(canMovePosList);
 
 		if (g.isValid(next)) {  
@@ -172,19 +174,24 @@ public class MazeBug extends Bug {
             if(actor instanceof Rock && actor.getColor().equals(Color.RED) ){  
                 isEnd = true; 
 			}  
+			
 			// It may be end if it reaches to red rock instead of only facing the red rock
-            moveTo(next);  
-            int facing = loc.getDirectionToward(next);  
-            this.setDirection(facing);  
-              
+			moveTo(next);
+			
+			int direct = loc.getDirectionToward(next);
+			setDirection(direct);
+				
+			// update the probability
+			probability[(direct / 90 + 3) % 4] += 1;
+			
             ArrayList<Location> temp = crossLocation.pop();  
             temp.add(next);  
             crossLocation.push(temp);  
               
-            ArrayList<Location> latest = new ArrayList<Location>();  
-            latest.add(next);  
-            crossLocation.push(latest);  
-        } else {  
+            ArrayList<Location> newest = new ArrayList<Location>();  
+            newest.add(next);  
+            crossLocation.push(newest);  
+        } else {
             removeSelfFromGrid();  
         }
 
@@ -204,17 +211,17 @@ public class MazeBug extends Bug {
 			if (goal instanceof Rock && goal.getColor().equals(Color.RED)){  
 				// bug in north of goal, so it needs to go south
 				if(getLocation().getRow() < goal.getRow()){  
-					probility[SOUTH_PROB] += 5;  
+					probability[SOUTH_PROB] += 5;  
 				// bug in south of goal, so it needs to go north
 				} else { 
-					probility[NORTH_PROB] += 5;  
+					probability[NORTH_PROB] += 5;  
 				} 
 				// bug in west of goal, so it needs to go east
 				if(getLocation().getCol() < goal.getCol()){  
-					probility[EAST_PROB] += 5;
+					probability[EAST_PROB] += 5;
 				// bug in east of goal, so it needs to go west
 				}else {  
-					probility[WEST_PROB] += 5;  
+					probability[WEST_PROB] += 5;  
 				}  
 				return;  
 			} 
@@ -222,6 +229,9 @@ public class MazeBug extends Bug {
 	}
 
 
+	/**
+	 * If there is no road, the bug will return to the last cross point
+	 */
 	public void backTrack(){
 		if(crossLocation.size() != 0){
 
@@ -235,26 +245,18 @@ public class MazeBug extends Bug {
 				
 				Location loc = getLocation();
 
-				int direction = loc.getDirectionToward(oldLoc);
+				int direct = loc.getDirectionToward(oldLoc);
 
 				if (gr.isValid(returnLocation)) {  
-                    setDirection(direction);  
+                    setDirection(direct);  
                     moveTo(oldLoc);  
                     stepCount ++;
                 } else {  
                     removeSelfFromGrid();  
 				}
 				
-				if ((int)(direction / 90) == Location.NORTH ) {  
-                    probility[SOUTH_PROB] --;  
-                } else if ((int)(direction / 90) == Location.EAST ) {  
-                    probility[WEST_PROB] --;  
-                } else if ((int)(direction / 90) == Location.SOUTH ) {  
-                    probility[NORTH_PROB] --;  
-                } else if ((int)(direction / 90) == Location.WEST ) {  
-                    probility[EAST_PROB] --;  
-				}  
-				
+				probability[(direct / 90 + 5) % 4] -= 1;
+
 				leaveFlower(loc);
 			}
 		}
@@ -268,25 +270,29 @@ public class MazeBug extends Bug {
 
 	private Location getNextPos(ArrayList<Location> validLoc){
 		
+		Location loc = getLocation();
 		ArrayList<Integer> tempDirect = new ArrayList<>();
 
-		for(Location tempLoc:validLoc){
-
+		for(Location tempLoc : validLoc){
+			tempDirect.add((loc.getDirectionToward(tempLoc) / 90 + 3) % 4);
 		}
 		
-		int randRange = r.nextInt(100);
+		int sum = 0;
+		for(Integer i : tempDirect){
+			sum += probability[i];
+		}
+		int randNum = new Random().nextInt(sum);
 		
-		int m; //结果数字
-		
-		if(n5 < 55){ //55个数字的区间，55%的几率
-			m = 1;
-		}else if(n5 < 95){//[55,95)，40个数字的区间，40%的几率
-			m = 2;
-		}else{
-			m = 3;
+		int i = 0;
+		int low = 0;
+		int high = probability[tempDirect[0]];
+		for(; i < tempDirect.size(); low += probability[tempDirect[i]], high += probability[tempDirect[i + 1]], ++i){
+			if(low <= randRange && randNum < high){
+				break;
+			}
 		}
 
-		return result;
+		return validLoc[i];
 	}
 
 }
