@@ -1,6 +1,8 @@
 import org.junit.Test;
 
 import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.awt.Graphics2D;
 
 import static org.junit.Assert.*;
 
@@ -37,7 +39,7 @@ public class ImageReaderTest{
     int[] pix_2_green;
     int[] pix_2_red;
 
-    @BeforeEach
+    @Before
     public void init(){
         imageProcessor = new ImplementImageProcessor();
         imageIO = new ImplementImageIO();
@@ -127,6 +129,15 @@ public class ImageReaderTest{
         int height = image.getHeight(null);
         int[] pixels = convertToBufferedFrom(image).getRGB(0, 0, width, height, null, 0, width);
         return pixels;
+    }
+
+    public static BufferedImage convertToBufferedFrom(Image image){
+        BufferedImage buffer = new BufferedImage(image.getWidth(null), image.getHeight(null), BufferedImage.TYPE_INT_RGB);
+        // used to draw the image into buffered image
+        Graphics2D graph = buffer.createGraphics();
+        graph.drawImage(image, 0, 0, null);
+        graph.dispose();
+        return buffer;
     }
 
 }

@@ -2,7 +2,7 @@
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.image.MemoryImageSource;
-import java.awt.iamge.BufferedImage;
+import java.awt.image.BufferedImage;
 import java.awt.Graphics2D;
 import javax.imageio.ImageIO;
 
