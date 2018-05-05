@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Test" default="test" basedir=".">
+	<target name="test">
+		<junit printsummary="true">   
+                 	<classpath>     
+                     		<pathelement location="/opt/resources/junit-4.12.jar" path="."/>   
+                 	</classpath> 
+                 	<test name="ImageReaderTest" /> 
+             	</junit>  
+	</target>
+
+</project>
