@@ -38,23 +38,36 @@ public class Solution extends Jigsaw {
      */
     public boolean BFSearch(JigsawNode bNode, JigsawNode eNode) {
 
-        Queue<JigsawNode> exploreList;  // 用以保存已发现但未访问的节点
-        Set<JigsawNode> visitedList;    // 用以保存已发现的节点
+        Set<JigsawNode> visitedList = new HashSet<>(1000);
+        Queue<JigsawNode> exploreList = new PriorityQueue<>(500, new Comparator<JigsawNode>() {
+            @Override
+            public int compare(JigsawNode a, JigsawNode b) {
+                if (a.getEstimatedValue() < b.getEstimatedValue()) {
+                    return -1;
+                } else if (a.getEstimatedValue() > b.getEstimatedValue()) {
+                    return 1;
+                } else if (a.getNodeDepth() < b.getNodeDepth()) {
+                    return -1;
+                } else if (a.getNodeDepth() > b.getNodeDepth()) {
+                    return 1;
+                }
+                return 0;
+            }
+        });
 
-        exploreList.addElement(bNode);
+        exploreList.add(bNode);
         currentJNode = bNode;
         while(!exploreList.isEmpty()){
             if(currentJNode.equals(eNode)){
                 return true;
             } else {
-                visitedList.addElement(currentJNode);
+                visitedList.add(currentJNode);
                 List<JigsawNode> adjacentNodes = getAdjJNodes(exploreList, visitedList, currentJNode);
                 for(JigsawNode temp : adjacentNodes){
-                    exploreList.addElement(temp);
+                    exploreList.add(temp);
                 }
-                exploreList.remove(0);
-                currentJNode = exploreList.firstElement();
-                visitedList.addElement(currentJNode);
+                currentJNode = exploreList.poll();
+                visitedList.add(currentJNode);
             }
         }
 
