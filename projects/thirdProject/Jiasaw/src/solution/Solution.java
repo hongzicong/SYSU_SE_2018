@@ -41,6 +41,8 @@ public class Solution extends Jigsaw {
      */
     public boolean BFSearch(JigsawNode bNode, JigsawNode eNode) {
 
+        boolean isFound = false;
+
         Set<JigsawNode> visitedList = new HashSet<>(1000);
         Queue<JigsawNode> exploreList = new PriorityQueue<>(500, new Comparator<JigsawNode>() {
             @Override
@@ -62,7 +64,9 @@ public class Solution extends Jigsaw {
         currentJNode = bNode;
         while(!exploreList.isEmpty()){
             if(currentJNode.equals(eNode)){
-                return true;
+                isFound = true;
+                getPath();
+                break;
             } else {
                 visitedList.add(currentJNode);
                 List<JigsawNode> adjacentNodes = getAdjJNodes(exploreList, visitedList, currentJNode);
@@ -74,7 +78,15 @@ public class Solution extends Jigsaw {
             }
         }
 
-        return false;
+        System.out.println("Jigsaw BF Search Result:");
+        System.out.println("Begin state:" + this.getBeginJNode().toString());
+        System.out.println("End state:" + this.getEndJNode().toString());
+        // System.out.println("Solution Path: ");
+        // System.out.println(this.getSolutionPath());
+        System.out.println("Total number of searched nodes:" + this.getSearchedNodesNum());
+        System.out.println("Depth of the current node is:" + this.getCurrentJNode().getNodeDepth());
+
+        return isFound;
     }
 
     
