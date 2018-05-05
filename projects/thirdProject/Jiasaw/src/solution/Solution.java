@@ -120,16 +120,27 @@ public class Solution extends Jigsaw {
     public void estimateValue(JigsawNode jNode) {
         int s = 0; // 后续节点不正确的数码个数
         int d = 0;
+        int distance = 0;
         int dimension = JigsawNode.getDimension();
         for (int index = 1; index < dimension * dimension; index++) {
+            if(jNode.getNodesState()[index] == 0){
+            	continue;
+            }
             if (jNode.getNodesState()[index] + 1 != jNode.getNodesState()[index + 1]) {
                 s++;
             }
-            d += Math.abs(jNode.getNodesState()[index] - index);
+            if (jNode.getNodesState()[index] != index) {
+                d++;
+                int num = jNode.getNodesState()[index];
+                int dim = JigsawNode.getDimension();
+                int x1 = (num - 1) % dim;
+                int y1 = (num - 1) / dim;
+                int x2 = (index - 1) % dim;
+                int y2 = (index - 1) / dim;
+                distance += Math.abs(x1 - x2) + Math.abs(y1 - y2);
+            }
         }
 
-        int sum = (int)(s + dist);
-
-        jNode.setEstimatedValue(sum);
+        jNode.setEstimatedValue(s + d + distance);
     }
 }
