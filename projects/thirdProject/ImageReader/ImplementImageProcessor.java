@@ -79,5 +79,6 @@ class RGBFilter extends RGBImageFilter{
                     + ((rgb & 0x000000ff)) * 0.114 );  
             return (rgb & 0xff000000) + (g << OFFSET_16BIT) + (g << OFFSET_8BIT) + g;  
         }  
+        return 0;
     }  
 }

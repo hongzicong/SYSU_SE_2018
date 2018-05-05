@@ -39,8 +39,9 @@ public class ImplementImageIO implements IImageIO {
     
     public Image myRead(String filePath){
         File file = new File(filePath);
-        FileInputStream inputStream = new FileInputStream(file);
         try{
+            FileInputStream inputStream = new FileInputStream(file);
+            
             byte[] bytes = new byte[HEAD_SIZE];
             inputStream.read(bytes);
 
