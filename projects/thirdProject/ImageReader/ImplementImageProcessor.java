@@ -62,7 +62,7 @@ class RGBFilter extends RGBImageFilter{
     // pixel's location, so IndexColorModels can be
     // filtered directly.
 
-    public ColorFilter(ColorNum c){  
+    public RGBFilter(ColorNum c){  
         colorNum = c;  
         canFilterIndexColorModel = true;  
     }  
