@@ -92,10 +92,10 @@ public class ImageReaderTest{
         int[] pix1Green = getPixels(image1Green);
         int[] pix2Green = getPixels(image2Green);
 
-        Image greenImage1 = imageProcessor.showChanelR(image1);
+        Image greenImage1 = imageProcessor.showChanelG(image1);
         int[] pixGoal1 = getPixels(greenImage1);
 
-        Image greenImage2 = imageProcessor.showChanelR(image2);
+        Image greenImage2 = imageProcessor.showChanelG(image2);
         int[] pixGoal2 = getPixels(greenImage2);
 
         assertTrue(Arrays.equals(pix1Green, pixGoal1) && Arrays.equals(pix2Green, pixGoal2));
@@ -110,10 +110,10 @@ public class ImageReaderTest{
         int[] pix1Blue = getPixels(image1Blue);
         int[] pix2Blue = getPixels(image2Blue);
 
-        Image blueImage1 = imageProcessor.showChanelR(image1);
+        Image blueImage1 = imageProcessor.showChanelB(image1);
         int[] pixGoal1 = getPixels(blueImage1);
 
-        Image blueImage2 = imageProcessor.showChanelR(image2);
+        Image blueImage2 = imageProcessor.showChanelB(image2);
         int[] pixGoal2 = getPixels(blueImage2);
 
         assertTrue(Arrays.equals(pix1Blue, pixGoal1) && Arrays.equals(pix2Blue, pixGoal2));
@@ -128,10 +128,10 @@ public class ImageReaderTest{
         int[] pix1Gray = getPixels(image1Gray);
         int[] pix2Gray = getPixels(image2Gray);
 
-        Image grayImage1 = imageProcessor.showChanelR(image1);
+        Image grayImage1 = imageProcessor.showGray(image1);
         int[] pixGoal1 = getPixels(grayImage1);
 
-        Image grayImage2 = imageProcessor.showChanelR(image2);
+        Image grayImage2 = imageProcessor.showGray(image2);
         int[] pixGoal2 = getPixels(grayImage2);
 
         assertTrue(Arrays.equals(pix1Gray, pixGoal1) && Arrays.equals(pix2Gray, pixGoal2));
