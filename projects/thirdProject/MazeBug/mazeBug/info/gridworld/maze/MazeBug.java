@@ -134,10 +134,6 @@ public class MazeBug extends Bug {
 	public boolean canMove() {
 
 		Grid<Actor> gr = getGrid();
-		// check whether the next location is valid or not 
-		if(!gr.isValid(next)){
-			return false;
-		}
 
 		// check if the next location can move
 		if(getValid(getLocation()).size() == 0){
