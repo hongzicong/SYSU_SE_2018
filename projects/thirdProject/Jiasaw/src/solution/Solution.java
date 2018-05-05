@@ -43,54 +43,58 @@ public class Solution extends Jigsaw {
      * @param eNode - 目标状态节点
      * @return 搜索成功时为true,失败为false
      */
-    public boolean BFSearch(JigsawNode bNode, JigsawNode eNode) throws IOException{
-
-        String filePath = "BFSearchDialog.txt";  
-        PrintWriter pw = new PrintWriter(new FileWriter(filePath));  
-
-        beginJNode = bNode;
-        endJNode = eNode;
-        boolean isFound = false;
-
-        Set<JigsawNode> visitedList = new HashSet<>(1000);
-        Queue<JigsawNode> exploreList = new PriorityQueue<>(500, new Comparator<JigsawNode>() {
-            @Override
-            public int compare(JigsawNode a, JigsawNode b) {
-                if (a.getEstimatedValue() < b.getEstimatedValue()) {
-                    return -1;
-                } else if (a.getEstimatedValue() > b.getEstimatedValue()) {
-                    return 1;
-                } else if (a.getNodeDepth() < b.getNodeDepth()) {
-                    return -1;
-                } else if (a.getNodeDepth() > b.getNodeDepth()) {
-                    return 1;
+    public boolean BFSearch(JigsawNode bNode, JigsawNode eNode){
+        try{
+            String filePath = "BFSearchDialog.txt";  
+            PrintWriter pw = new PrintWriter(new FileWriter(filePath));  
+    
+            beginJNode = bNode;
+            endJNode = eNode;
+            boolean isFound = false;
+    
+            Set<JigsawNode> visitedList = new HashSet<>(1000);
+            Queue<JigsawNode> exploreList = new PriorityQueue<>(500, new Comparator<JigsawNode>() {
+                @Override
+                public int compare(JigsawNode a, JigsawNode b) {
+                    if (a.getEstimatedValue() < b.getEstimatedValue()) {
+                        return -1;
+                    } else if (a.getEstimatedValue() > b.getEstimatedValue()) {
+                        return 1;
+                    } else if (a.getNodeDepth() < b.getNodeDepth()) {
+                        return -1;
+                    } else if (a.getNodeDepth() > b.getNodeDepth()) {
+                        return 1;
+                    }
+                    return 0;
                 }
-                return 0;
-            }
-        });
-
-        exploreList.add(bNode);
-        currentJNode = bNode;
-        while(!exploreList.isEmpty()){
-            if(currentJNode.equals(eNode)){
-                isFound = true;
-                getPath();
-                break;
-            } else {
-                visitedList.add(currentJNode);
-                List<JigsawNode> adjacentNodes = getAdjJNodes(exploreList, visitedList, currentJNode);
-                for(JigsawNode temp : adjacentNodes){
-                    exploreList.add(temp);
+            });
+    
+            exploreList.add(bNode);
+            currentJNode = bNode;
+            while(!exploreList.isEmpty()){
+                if(currentJNode.equals(eNode)){
+                    isFound = true;
+                    getPath();
+                    break;
+                } else {
+                    visitedList.add(currentJNode);
+                    List<JigsawNode> adjacentNodes = getAdjJNodes(exploreList, visitedList, currentJNode);
+                    for(JigsawNode temp : adjacentNodes){
+                        exploreList.add(temp);
+                    }
+                    currentJNode = exploreList.poll();
+                    visitedList.add(currentJNode);
                 }
-                currentJNode = exploreList.poll();
-                visitedList.add(currentJNode);
             }
+    
+            this.printResult(pw);  
+            pw.close();
+    
+            return isFound;
+        }catch(IOException e){
+            e.printStackTrace();
         }
-
-        this.printResult(pw);  
-        pw.close();
-
-        return isFound;
+        return false;
     }
 
     
