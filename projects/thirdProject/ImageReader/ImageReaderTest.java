@@ -38,15 +38,15 @@ public class ImageReaderTest{
         image1 = imageIO.myRead("bmptest/1.bmp");
         image2 = imageIO.myRead("bmptest/2.bmp");
     
-        image1Blue = imageIO.myRead("bmptest/goal/1Blue_goal.bmp");
-        image1Gray = imageIO.myRead("bmptest/goal/1Gray_goal.bmp");
-        image1Green = imageIO.myRead("bmptest/goal/1Green_goal.bmp");
-        image1Red = imageIO.myRead("bmptest/goal/1Red_goal.bmp");
+        image1Blue = imageIO.myRead("bmptest/goal/1_blue_goal.bmp");
+        image1Gray = imageIO.myRead("bmptest/goal/1_gray_goal.bmp");
+        image1Green = imageIO.myRead("bmptest/goal/1_green_goal.bmp");
+        image1Red = imageIO.myRead("bmptest/goal/1_red_goal.bmp");
     
-        image2Blue = imageIO.myRead("bmptest/goal/2Blue_goal.bmp");
-        image2Gray = imageIO.myRead("bmptest/goal/2Gray_goal.bmp");
-        image2Green = imageIO.myRead("bmptest/goal/2Green_goal.bmp");
-        image2Red = imageIO.myRead("bmptest/goal/2Red_goal.bmp");
+        image2Blue = imageIO.myRead("bmptest/goal/2_blue_goal.bmp");
+        image2Gray = imageIO.myRead("bmptest/goal/2_gray_goal.bmp");
+        image2Green = imageIO.myRead("bmptest/goal/2_green_goal.bmp");
+        image2Red = imageIO.myRead("bmptest/goal/2_red_goal.bmp");
     }
 
     /**
