@@ -4,6 +4,7 @@ import java.awt.Toolkit;
 import java.awt.image.MemoryImageSource;
 import java.awt.iamge.BufferedImage;
 import java.awt.Graphics2D;
+import javax.imageio.ImageIO;
 
 import java.io.File;
 import java.io.FileInputStream;
