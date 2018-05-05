@@ -13,12 +13,6 @@ import jigsaw.JigsawNode;
  */
 public class Solution extends Jigsaw {
 
-    private List<JigsawNode> solutionPath;  // 解路径：用以保存从起始状态到达目标状态的移动路径中的每一个状态节点
-    private int searchedNodesNum;           // 已访问节点数：用以记录所有访问过的节点的数量
-
-    private Queue<JigsawNode> exploreList;  // 用以保存已发现但未访问的节点
-    private Set<JigsawNode> visitedList;    // 用以保存已发现的节点
-
     /**
      * 拼图构造函数
      */
@@ -42,44 +36,32 @@ public class Solution extends Jigsaw {
      * @return 搜索成功时为true,失败为false
      */
     public boolean BFSearch(JigsawNode bNode, JigsawNode eNode) {
-        
-        PrintWriter pw = new PrintWriter(new FileWriter("BFSearchDialog.txt"));
 
-        boolean isFound;
+        Queue<JigsawNode> exploreList;  // 用以保存已发现但未访问的节点
+        Set<JigsawNode> visitedList;    // 用以保存已发现的节点
 
         exploreList.addElement(bNode);
         currentJNode = bNode;
         while(!exploreList.isEmpty()){
             if(currentJNode.equals(eNode)){
-                isFound = true;
-                
-                JigsawNode temp = currentJNode;
-                while (temp != null) {  
-                    solutionPath.add(temp);  
-                    temp = temp.getParent();  
-                }
-                
-                break;
+                return true;
             } else {
                 visitedList.addElement(currentJNode);
-                List<JigsawNode> adjacentNodes = getAdjJNodes(currentJNode);
+                List<JigsawNode> adjacentNodes = getAdjJNodes(exploreList, visitedList, currentJNode);
                 for(JigsawNode temp : adjacentNodes){
                     exploreList.addElement(temp);
                 }
                 exploreList.remove(0);
                 currentJNode = exploreList.firstElement();
                 visitedList.addElement(currentJNode);
-                searchedNodesNum += 1;
             }
         }
 
-        printResult(pw);
-        pw.close();
-
-        return isFound;
+        return false;
     }
 
-    private List<JigsawNode> getAdjJNodes(JigsawNode jigsawNode){
+    
+    private List<JigsawNode> getAdjJNodes(Queue<JigsawNode> exploreList, Set<JigsawNode> visitedList, JigsawNode jigsawNode){
         ArrayList<JigsawNode> resultJNodes = new ArrayList<>();
         for(int i = 0; i < 4; ++i){
             JigsawNode temp = new JigsawNode(jigsawNode);
