@@ -9,31 +9,27 @@ import java.awt.Image;
 public class ImplementImageProcessor implements IImageProcessor {
 
     public Image showChanelR(Image sourceImage){
-        RGBFilter grayFilter = new RGBFilter(ColorNum.RED);  
-        Toolkit toolKit = Toolkit.getDefaultToolkit();  
-        Image img = toolKit.createImage(new FilteredImageSource(sourceImage.getSource(), grayFilter));  
-        return img; 
+        RGBFilter redFilter = new RGBFilter(ColorNum.RED);  
+        Toolkit toolKit = Toolkit.getDefaultToolkit();    
+        return toolKit.createImage(new FilteredImageSource(sourceImage.getSource(), redFilter));
     }
 
     public Image showChanelG(Image sourceImage){
-        RGBFilter grayFilter = new RGBFilter(ColorNum.GREEN);  
-        Toolkit toolKit = Toolkit.getDefaultToolkit();  
-        Image img = toolKit.createImage(new FilteredImageSource(sourceImage.getSource(), grayFilter));  
-        return img; 
+        RGBFilter greenFilter = new RGBFilter(ColorNum.GREEN);  
+        Toolkit toolKit = Toolkit.getDefaultToolkit();    
+        return toolKit.createImage(new FilteredImageSource(sourceImage.getSource(), greenFilter));
     }
 
     public Image showChanelB(Image sourceImage){
-        RGBFilter grayFilter = new RGBFilter(ColorNum.BLUE);  
-        Toolkit toolKit = Toolkit.getDefaultToolkit();  
-        Image img = toolKit.createImage(new FilteredImageSource(sourceImage.getSource(), grayFilter));  
-        return img; 
+        RGBFilter blueFilter = new RGBFilter(ColorNum.BLUE);  
+        Toolkit toolKit = Toolkit.getDefaultToolkit();   
+        return toolKit.createImage(new FilteredImageSource(sourceImage.getSource(), blueFilter));
     }
 
     public Image showGray(Image sourceImage){
         RGBFilter grayFilter = new RGBFilter(ColorNum.GREY);  
-        Toolkit toolKit = Toolkit.getDefaultToolkit();  
-        Image img = toolKit.createImage(new FilteredImageSource(sourceImage.getSource(), grayFilter));  
-        return img; 
+        Toolkit toolKit = Toolkit.getDefaultToolkit();    
+        return toolKit.createImage(new FilteredImageSource(sourceImage.getSource(), grayFilter));
     }
 
 }

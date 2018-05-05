@@ -14,115 +14,102 @@ public class ImageReaderTest{
     private ImplementImageProcessor imageProcessor;
     private ImplementImageIO imageIO;
 
-    private Image image_1;
-    private Image image_2;
+    private Image image1;
+    private Image image2;
 
-    private Image image_1_blue;
-    private Image image_1_gray;
-    private Image image_1_green;
-    private Image image_1_red;
+    private Image image1Blue;
+    private Image image1Gray;
+    private Image image1Green;
+    private Image image1Red;
 
-    private Image image_2_blue;
-    private Image image_2_gray;
-    private Image image_2_green;
-    private Image image_2_red;
-
-    private int[] pix_1;
-    private int[] pix_2;
-
-    private int[] pix_1_blue;
-    private int[] pix_1_gray;
-    private int[] pix_1_green;
-    private int[] pix_1_red;
-
-    private int[] pix_2_blue;
-    private int[] pix_2_gray;
-    private int[] pix_2_green;
-    private int[] pix_2_red;
+    private Image image2Blue;
+    private Image image2Gray;
+    private Image image2Green;
+    private Image image2Red;
 
     @Before
     public void init(){
         imageProcessor = new ImplementImageProcessor();
         imageIO = new ImplementImageIO();
     
-        image_1 = imageIO.myRead("bmptest/1.bmp");
-        image_2 = imageIO.myRead("bmptest/2.bmp");
+        image1 = imageIO.myRead("bmptest/1.bmp");
+        image2 = imageIO.myRead("bmptest/2.bmp");
     
-        image_1_blue = imageIO.myRead("bmptest/1_blue_goal.bmp");
-        image_1_gray = imageIO.myRead("bmptest/1_gray_goal.bmp");
-        image_1_green = imageIO.myRead("bmptest/1_green_goal.bmp");
-        image_1_red = imageIO.myRead("bmptest/1_red_goal.bmp");
+        image1Blue = imageIO.myRead("bmptest/1Blue_goal.bmp");
+        image1Gray = imageIO.myRead("bmptest/1Gray_goal.bmp");
+        image1Green = imageIO.myRead("bmptest/1Green_goal.bmp");
+        image1Red = imageIO.myRead("bmptest/1Red_goal.bmp");
     
-        image_2_blue = imageIO.myRead("bmptest/2_blue_goal.bmp");
-        image_2_gray = imageIO.myRead("bmptest/2_gray_goal.bmp");
-        image_2_green = imageIO.myRead("bmptest/2_green_goal.bmp");
-        image_2_red = imageIO.myRead("bmptest/2_red_goal.bmp");
+        image2Blue = imageIO.myRead("bmptest/2Blue_goal.bmp");
+        image2Gray = imageIO.myRead("bmptest/2Gray_goal.bmp");
+        image2Green = imageIO.myRead("bmptest/2Green_goal.bmp");
+        image2Red = imageIO.myRead("bmptest/2Red_goal.bmp");
     }
 
     @Test
     public void testWidth(){
-        assertTrue(image_1.getWidth(null) == 400 && image_2.getWidth(null) == 715);
+        assertTrue(image1.getWidth(null) == 400 && image2.getWidth(null) == 715);
     }
 
     @Test
     public void testHeight(){
-        assertTrue(image_1.getHeight(null) == 400 && image_2.getHeight(null) == 1024);
+        assertTrue(image1.getHeight(null) == 400 && image2.getHeight(null) == 1024);
     }
 
     @Test
     public void testPixRed(){
-        pix_1_red = getPixels(image_1_red);
-        pix_2_red = getPixels(image_2_red);
+        int[] pix1Red = getPixels(image1Red);
+        int[] pix2Red = getPixels(image2Red);
 
-        Image redImage_1 = imageProcessor.showChanelR(image_1);
-        int[] pix_goal_1 = getPixels(redImage_1);
+        Image redImage1 = imageProcessor.showChanelR(image1);
+        int[] pixGoal1 = getPixels(redImage1);
 
-        Image redImage_2 = imageProcessor.showChanelR(image_2);
-        int[] pix_goal_2 = getPixels(redImage_2);
+        Image redImage2 = imageProcessor.showChanelR(image2);
+        int[] pixGoal2 = getPixels(redImage2);
 
-        assertTrue(Arrays.equals(pix_1_red, pix_goal_1) && Arrays.equals(pix_2_red, pix_goal_2));
+        assertTrue(Arrays.equals(pix1Red, pixGoal1) && Arrays.equals(pix2Red, pixGoal2));
     }
 
     @Test
     public void testPixGreen(){
-        pix_1_green = getPixels(image_1_green);
-        pix_2_green = getPixels(image_2_green);
+        int[] pix1Green = getPixels(image1Green);
+        int[] pix2Green = getPixels(image2Green);
 
-        Image greenImage_1 = imageProcessor.showChanelR(image_1);
-        int[] pix_goal_1 = getPixels(greenImage_1);
+        Image greenImage1 = imageProcessor.showChanelR(image1);
+        int[] pixGoal1 = getPixels(greenImage1);
 
-        Image greenImage_2 = imageProcessor.showChanelR(image_2);
-        int[] pix_goal_2 = getPixels(greenImage_2);
+        Image greenImage2 = imageProcessor.showChanelR(image2);
+        int[] pixGoal2 = getPixels(greenImage2);
 
-        assertTrue(Arrays.equals(pix_1_green, pix_goal_1) && Arrays.equals(pix_2_green, pix_goal_2));
+        assertTrue(Arrays.equals(pix1Green, pixGoal1) && Arrays.equals(pix2Green, pixGoal2));
     }
 
     @Test
     public void testPixBlue(){
-        pix_1_blue = getPixels(image_1_blue);
-        pix_2_blue = getPixels(image_2_blue);
+        int[] pix1Blue = getPixels(image1Blue);
+        int[] pix2Blue = getPixels(image2Blue);
 
-        Image blueImage_1 = imageProcessor.showChanelR(image_1);
-        int[] pix_goal_1 = getPixels(blueImage_1);
+        Image blueImage1 = imageProcessor.showChanelR(image1);
+        int[] pixGoal1 = getPixels(blueImage1);
 
-        Image blueImage_2 = imageProcessor.showChanelR(image_2);
-        int[] pix_goal_2 = getPixels(blueImage_2);
+        Image blueImage2 = imageProcessor.showChanelR(image2);
+        int[] pixGoal2 = getPixels(blueImage2);
 
-        assertTrue(Arrays.equals(pix_1_blue, pix_goal_1) && Arrays.equals(pix_2_blue, pix_goal_2));
+        assertTrue(Arrays.equals(pix1Blue, pixGoal1) && Arrays.equals(pix2Blue, pixGoal2));
     }
 
     @Test
     public void testPixGrey(){
-        pix_1_gray = getPixels(image_1_gray);
-        pix_2_gray = getPixels(image_2_gray);
+        int[] pix1Gray = getPixels(image1Gray);
+        int[] pix2Gray = getPixels(image2Gray);
 
-        Image grayImage_1 = imageProcessor.showChanelR(image_1);
-        int[] pix_goal_1 = getPixels(grayImage_1);
+        Image grayImage1 = imageProcessor.showChanelR(image1);
+        int[] pixGoal1 = getPixels(grayImage1);
 
-        Image grayImage_2 = imageProcessor.showChanelR(image_2);
-        int[] pix_goal_2 = getPixels(grayImage_2);
+        Image grayImage2 = imageProcessor.showChanelR(image2);
+        int[] pixGoal2 = getPixels(grayImage2);
 
-        assertTrue(Arrays.equals(pix_1_gray, pix_goal_1) && Arrays.equals(pix_2_gray, pix_goal_2));
+        assertTrue(Arrays.equals(pix1Gray, pixGoal1) && Arrays.equals(pix2Gray, pixGoal2));
     }
 
     public static int[] getPixels(Image image) {
