@@ -10,8 +10,10 @@ import java.awt.Color;
  * This class runs a world that contains maze bugs. <br />
  * This class is not tested on the AP CS A and AB exams.
  */
-public class MazeBugRunner
+public final class MazeBugRunner
 {
+    private MazeBug(){}
+
     public static void main(String[] args)
     {
         //UnboundedGrid ugr=new UnboundedGrid();

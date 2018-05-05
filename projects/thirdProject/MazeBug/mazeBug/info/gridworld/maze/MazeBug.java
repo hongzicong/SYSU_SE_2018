@@ -19,16 +19,16 @@ import javax.swing.JOptionPane;
  */
 public class MazeBug extends Bug {
 	
-	public Location next;
+	private Location next;
 	
-	public boolean isEnd = false;
+	private boolean isEnd = false;
 	
-	public Stack<ArrayList<Location>> crossLocation = new Stack<ArrayList<Location>>();
+	private Stack<ArrayList<Location>> crossLocation = new Stack<ArrayList<Location>>();
 
-	public Integer stepCount = 0;
+	private Integer stepCount = 0;
 	
 	// final message has been shown
-	boolean hasShown = false; 
+	private boolean hasShown = false; 
 
 	// East, South, West, North
 	private int[] directProb = {1, 1, 1, 1};
@@ -75,9 +75,9 @@ public class MazeBug extends Bug {
 		// check if there has road to go
 		boolean willMove = canMove();
 
-		if (isEnd == true) {
+		if (isEnd) {
 		//to show step count when reach the goal
-			if (hasShown == false) {
+			if (!hasShown) {
 				String msg = stepCount.toString() + " steps";
 				JOptionPane.showMessageDialog(null, msg);
 				hasShown = true;
@@ -133,8 +133,6 @@ public class MazeBug extends Bug {
 	 */
 	public boolean canMove() {
 
-		Grid<Actor> gr = getGrid();
-
 		// check if the next location can move
 		if(getValid(getLocation()).size() == 0){
 			return false;
@@ -153,8 +151,9 @@ public class MazeBug extends Bug {
 
 		Grid<Actor> gr = getGrid();
 
-		if (gr == null)
+		if (gr == null){
 			return;
+		}
  
 		Location loc = getLocation();
 
