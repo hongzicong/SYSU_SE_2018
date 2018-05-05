@@ -1,8 +1,8 @@
-package info.gridworld.maze;
 import info.gridworld.actor.ActorWorld;
 import info.gridworld.grid.Location;
 import info.gridworld.grid.UnboundedGrid;
 import info.gridworld.actor.Rock;
+import info.gridworld.maze.MazeBug;
 import java.awt.Color;
 
 /**
