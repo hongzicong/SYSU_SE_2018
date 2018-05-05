@@ -6,7 +6,7 @@ import java.awt.image.RGBImageFilter;
 
 import java.awt.Image;
 
-public class ImplementImageProcessor implements ImageProcessor {
+public class ImplementImageProcessor implements IImageProcessor {
 
     // const used to denote as the shift offset
     // used to shift 3 bytes 

@@ -6,8 +6,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
+import imagereader.IImageIO;  
 
-public class ImplementImageIO implements ImageIO {
+public class ImplementImageIO implements IImageIO {
 
     // const used to denote as the shift offset
     // used to shift 3 bytes 
