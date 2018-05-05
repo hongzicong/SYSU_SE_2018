@@ -46,9 +46,7 @@ class RGBFilter extends RGBImageFilter{
 
     
     // const used to denote as the shift offset
-    // used to shift 3 bytes 
-    private static final int OFFSET_24BIT = 24;
-    
+	
     // used to shift 2 bytes
     private static final int OFFSET_16BIT = 16;
     

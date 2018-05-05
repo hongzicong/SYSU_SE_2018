@@ -11,34 +11,34 @@ import java.util.Arrays;
 
 public class ImageReaderTest{
 
-    ImplementImageProcessor imageProcessor;
-    ImplementImageIO imageIO;
+    private ImplementImageProcessor imageProcessor;
+    private ImplementImageIO imageIO;
 
-    Image image_1;
-    Image image_2;
+    private Image image_1;
+    private Image image_2;
 
-    Image image_1_blue;
-    Image image_1_gray;
-    Image image_1_green;
-    Image image_1_red;
+    private Image image_1_blue;
+    private Image image_1_gray;
+    private Image image_1_green;
+    private Image image_1_red;
 
-    Image image_2_blue;
-    Image image_2_gray;
-    Image image_2_green;
-    Image image_2_red;
+    private Image image_2_blue;
+    private Image image_2_gray;
+    private Image image_2_green;
+    private Image image_2_red;
 
-    int[] pix_1;
-    int[] pix_2;
+    private int[] pix_1;
+    private int[] pix_2;
 
-    int[] pix_1_blue;
-    int[] pix_1_gray;
-    int[] pix_1_green;
-    int[] pix_1_red;
+    private int[] pix_1_blue;
+    private int[] pix_1_gray;
+    private int[] pix_1_green;
+    private int[] pix_1_red;
 
-    int[] pix_2_blue;
-    int[] pix_2_gray;
-    int[] pix_2_green;
-    int[] pix_2_red;
+    private int[] pix_2_blue;
+    private int[] pix_2_gray;
+    private int[] pix_2_green;
+    private int[] pix_2_red;
 
     @Before
     public void init(){
