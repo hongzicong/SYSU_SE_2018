@@ -1,4 +1,4 @@
-# ImageReader
+# MazeBug
 
 ## 项目结构
 
